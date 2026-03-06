@@ -1,6 +1,9 @@
 import { makeRouteHandler } from "@keystatic/next/route-handler";
 import keystaticConfig from "@/keystatic.config";
 
+// Prevent Next.js from trying to statically collect this route at build time
+export const dynamic = "force-dynamic";
+
 /**
  * Only pass GitHub OAuth credentials when ALL three env vars are set.
  * This prevents the "Missing required config" error during build when
