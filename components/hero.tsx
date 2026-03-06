@@ -38,7 +38,7 @@ export function Hero() {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 text-base font-medium group shadow-lg shadow-primary/20"
               >
-                <Link href="#contact">
+                <Link href="/contact">
                   Request a Callback
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </Link>
@@ -49,7 +49,7 @@ export function Hero() {
                 variant="outline"
                 className="border-border text-foreground hover:bg-secondary h-14 px-8 text-base font-medium"
               >
-                <Link href="#services">View Our Services</Link>
+                <Link href="/services">View Our Services</Link>
               </Button>
             </div>
             

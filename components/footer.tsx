@@ -2,21 +2,14 @@ import Link from "next/link"
 import { Phone, Mail, MapPin, Clock, ArrowRight, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const quickLinks = [
-  { label: "Services", href: "#services" },
-  { label: "About Us", href: "#about" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "#contact" },
-]
+import { services as allServices } from "@/lib/services"
 
-const services = [
-  "Plumbing & Drain Cleaning",
-  "Heavy Crane Services",
-  "HVAC & AC Maintenance",
-  "Painting & Decor",
-  "Electrical Services",
-  "General Construction",
+const quickLinks = [
+  { label: "Services", href: "/services" },
+  { label: "About Us", href: "/#about" },
+  { label: "Testimonials", href: "/#testimonials" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ]
 
 export function Footer() {
@@ -146,13 +139,13 @@ export function Footer() {
             <nav aria-label="Our services">
               <h4 className="text-background font-semibold text-lg mb-6">Our Services</h4>
               <ul className="space-y-3 list-none">
-                {services.map((service) => (
-                  <li key={service}>
+                {allServices.map((service) => (
+                  <li key={service.slug}>
                     <Link
-                      href="#services"
+                      href={`/services/${service.slug}`}
                       className="text-background/70 hover:text-primary transition-colors text-sm rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background/50"
                     >
-                      {service}
+                      {service.title}
                     </Link>
                   </li>
                 ))}
@@ -191,13 +184,13 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-6">
               <Link
-                href="#"
+                href="/privacy-policy"
                 className="text-sm text-background/60 hover:text-primary transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background/50"
               >
                 Privacy Policy
               </Link>
               <Link
-                href="#"
+                href="/terms-of-service"
                 className="text-sm text-background/60 hover:text-primary transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background/50"
               >
                 Terms of Service

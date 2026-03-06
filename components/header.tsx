@@ -6,11 +6,11 @@ import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#about", label: "About" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: "/services", label: "Services" },
+  { href: "/#about", label: "About" },
+  { href: "/#testimonials", label: "Testimonials" },
   { href: "/blog", label: "Blog" },
-  { href: "#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ]
 
 export function Header() {
@@ -90,7 +90,7 @@ export function Header() {
               <span>+971 4 555 1234</span>
             </Link>
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
-              <Link href="#contact">Get a Quote</Link>
+              <Link href="/contact">Get a Quote</Link>
             </Button>
           </div>
 
@@ -147,7 +147,7 @@ export function Header() {
               className="bg-primary text-primary-foreground hover:bg-primary/90 w-full h-12 text-base"
             >
               <Link
-                href="#contact"
+                href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 tabIndex={mobileMenuOpen ? 0 : -1}
               >
