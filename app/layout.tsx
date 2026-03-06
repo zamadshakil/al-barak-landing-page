@@ -16,7 +16,6 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: 'Al Barak Technical Services | Premium Maintenance & Engineering UAE',
   description: 'Engineering reliability across the UAE. Premium technical and maintenance services including plumbing, HVAC, electrical, heavy crane services, and construction. 24/7 availability.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
