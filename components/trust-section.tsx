@@ -4,42 +4,63 @@ import Image from "next/image"
 import { useEffect, useState, useRef } from "react"
 import { CheckCircle2, Users, Building2, Headphones, ThumbsUp } from "lucide-react"
 
-function AnimatedCounter({ end, suffix = "", duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
+/**
+ * Animated number counter — respects prefers-reduced-motion.
+ * Provides an accessible sr-only span with the final value so
+ * screen readers announce the result immediately.
+ */
+function AnimatedCounter({
+  end,
+  suffix = "",
+  duration = 2000,
+}: {
+  end: number
+  suffix?: string
+  duration?: number
+}) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLDivElement>(null)
   const hasAnimated = useRef(false)
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true
+
+          if (prefersReducedMotion) {
+            setCount(end)
+            return
+          }
+
           const startTime = Date.now()
           const animate = () => {
             const elapsed = Date.now() - startTime
             const progress = Math.min(elapsed / duration, 1)
             const easeOut = 1 - Math.pow(1 - progress, 3)
             setCount(Math.floor(easeOut * end))
-            if (progress < 1) {
-              requestAnimationFrame(animate)
-            }
+            if (progress < 1) requestAnimationFrame(animate)
           }
           requestAnimationFrame(animate)
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     )
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
+    if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
   }, [end, duration])
 
+  const displayValue = `${count.toLocaleString()}${suffix}`
+  const finalValue = `${end.toLocaleString()}${suffix}`
+
   return (
-    <div ref={ref} className="font-serif text-4xl lg:text-5xl font-bold text-foreground">
-      {count.toLocaleString()}{suffix}
+    <div ref={ref} className="font-serif text-4xl lg:text-5xl font-bold text-foreground" aria-hidden="true">
+      {displayValue}
+      {/* Accessible final value for screen readers */}
+      <span className="sr-only">{finalValue}</span>
     </div>
   )
 }
@@ -50,28 +71,28 @@ const stats = [
     value: 850,
     suffix: "+",
     label: "Happy Clients",
-    description: "Across residential & commercial"
+    description: "Across residential & commercial",
   },
   {
     icon: Building2,
     value: 2500,
     suffix: "+",
     label: "Projects Completed",
-    description: "On time, every time"
+    description: "On time, every time",
   },
   {
     icon: ThumbsUp,
     value: 15,
     suffix: "+",
     label: "Years Experience",
-    description: "Trusted since 2009"
+    description: "Trusted since 2009",
   },
   {
     icon: Headphones,
     value: 24,
     suffix: "/7",
     label: "Support Available",
-    description: "Always here for you"
+    description: "Always here for you",
   },
 ]
 
@@ -84,32 +105,32 @@ const certifications = [
 
 export function TrustSection() {
   return (
-    <section id="about" className="relative py-20 lg:py-28 overflow-hidden bg-secondary/30">
+    <section id="about" className="relative py-20 lg:py-28 overflow-hidden bg-secondary/30" aria-labelledby="about-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Image */}
           <div className="relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-6/5">
               <Image
                 src="/images/team.jpg"
-                alt="Our professional team"
-                width={600}
-                height={500}
-                className="w-full h-auto object-cover"
+                alt="Al Barak team of technicians in safety gear at a project site in Dubai"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
-            {/* Experience Badge */}
-            <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-2xl shadow-xl">
+            {/* Experience Badge — hidden on small screens to prevent overflow */}
+            <div className="hidden md:block absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-2xl shadow-xl">
               <p className="text-4xl font-bold">15+</p>
-              <p className="text-sm">Years of Excellence</p>
+              <p className="text-sm font-medium">Years of Excellence</p>
             </div>
           </div>
           
           {/* Right - Content */}
           <div>
             <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">Who Are We?</p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight mb-6">
-              <span className="text-balance">A Team of Reliable Professionals</span>
+            <h2 id="about-heading" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight mb-6">
+              A Team of Reliable Professionals
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
               With over 15 years of experience in technical services, our team of 30+ experts are here to help you with all your maintenance needs. Whether it is a complicated issue or one that just needs a quick fix, we will help you figure it out and fix it at the most affordable cost.
@@ -119,25 +140,26 @@ export function TrustSection() {
             </p>
             
             {/* Certifications */}
-            <div className="flex flex-wrap gap-3 mb-8">
+            <ul className="flex flex-wrap gap-3 mb-8 list-none" aria-label="Certifications">
               {certifications.map((cert) => (
-                <div key={cert} className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border">
-                  <CheckCircle2 className="w-4 h-4 text-primary" />
+                <li key={cert} className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border">
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" aria-hidden="true" />
                   <span className="text-sm text-foreground font-medium">{cert}</span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
         
         {/* Stats Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 lg:mt-24">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 lg:mt-24" role="list" aria-label="Company statistics">
           {stats.map((stat) => (
             <div 
               key={stat.label}
               className="text-center p-8 rounded-2xl bg-card border border-border hover:shadow-lg hover:shadow-primary/5 transition-all group"
+              role="listitem"
             >
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/15 transition-colors" aria-hidden="true">
                 <stat.icon className="w-8 h-8 text-primary" />
               </div>
               <AnimatedCounter end={stat.value} suffix={stat.suffix} />

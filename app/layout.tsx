@@ -5,17 +5,29 @@ import './globals.css'
 
 const inter = Inter({ 
   subsets: ["latin"],
-  variable: '--font-inter'
+  variable: '--font-inter',
+  display: 'swap',
 });
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"],
-  variable: '--font-playfair'
+  variable: '--font-playfair',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
   title: 'Al Barak Technical Services | Premium Maintenance & Engineering UAE',
   description: 'Engineering reliability across the UAE. Premium technical and maintenance services including plumbing, HVAC, electrical, heavy crane services, and construction. 24/7 availability.',
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://albarak.ae'
+  ),
+  openGraph: {
+    title: 'Al Barak Technical Services',
+    description: 'Premium maintenance & engineering services across the UAE. Available 24/7.',
+    siteName: 'Al Barak Technical Services',
+    locale: 'en_AE',
+    type: 'website',
+  },
   icons: {
     icon: [
       {
@@ -43,6 +55,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased bg-background text-foreground">
+        {/* Skip-to-content link for keyboard / screen-reader users */}
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         {children}
         <Analytics />
       </body>
