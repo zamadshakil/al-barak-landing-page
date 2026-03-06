@@ -1,6 +1,6 @@
 import { 
   Droplets, 
-  Crane, 
+  Container, 
   Wind, 
   Paintbrush, 
   Zap, 
@@ -18,7 +18,7 @@ const services = [
     featured: true,
   },
   {
-    icon: Crane,
+    icon: Container,
     title: "Heavy Crane Services",
     description: "Licensed crane operations for construction, industrial lifting, and specialized heavy equipment positioning.",
     features: ["Mobile Cranes", "Tower Cranes", "Rigging Solutions"],
