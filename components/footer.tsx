@@ -60,7 +60,7 @@ export function Footer() {
               asChild
               size="lg"
               variant="outline"
-              className="border-primary-foreground/60 text-primary-foreground hover:bg-primary-foreground/20 h-16 px-10 text-lg font-medium"
+              className="border-primary-foreground/60 bg-transparent text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground h-16 px-10 text-lg font-medium"
             >
               <Link
                 href="https://wa.me/97145551234"

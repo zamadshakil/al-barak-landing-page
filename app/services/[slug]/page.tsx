@@ -157,7 +157,7 @@ export default async function ServiceDetailPage({
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-background/60 text-background hover:bg-background/20 h-14 px-8 font-medium"
+                  className="border-background/60 bg-transparent text-background hover:bg-background/20 hover:text-background h-14 px-8 font-medium"
                 >
                   <Link href="tel:+97145551234" aria-label="Call +971 4 555 1234">
                     <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
@@ -369,7 +369,7 @@ export default async function ServiceDetailPage({
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-primary-foreground/60 text-primary-foreground hover:bg-primary-foreground/20 h-14 px-10"
+                className="border-primary-foreground/60 bg-transparent text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground h-14 px-10"
               >
                 <Link href="tel:+97145551234" aria-label="Call +971 4 555 1234">
                   <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
