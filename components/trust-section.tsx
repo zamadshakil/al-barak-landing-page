@@ -1,7 +1,8 @@
 "use client"
 
+import Image from "next/image"
 import { useEffect, useState, useRef } from "react"
-import { CheckCircle2, Users, Building2, Headphones } from "lucide-react"
+import { CheckCircle2, Users, Building2, Headphones, ThumbsUp } from "lucide-react"
 
 function AnimatedCounter({ end, suffix = "", duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0)
@@ -37,7 +38,7 @@ function AnimatedCounter({ end, suffix = "", duration = 2000 }: { end: number; s
   }, [end, duration])
 
   return (
-    <div ref={ref} className="font-serif text-5xl lg:text-6xl font-medium text-foreground">
+    <div ref={ref} className="font-serif text-4xl lg:text-5xl font-bold text-foreground">
       {count.toLocaleString()}{suffix}
     </div>
   )
@@ -48,21 +49,21 @@ const stats = [
     icon: Users,
     value: 850,
     suffix: "+",
-    label: "Active Clients",
-    description: "Across residential & commercial sectors"
+    label: "Happy Clients",
+    description: "Across residential & commercial"
   },
   {
     icon: Building2,
     value: 2500,
     suffix: "+",
-    label: "Projects Delivered",
+    label: "Projects Completed",
     description: "On time, every time"
   },
   {
-    icon: CheckCircle2,
+    icon: ThumbsUp,
     value: 15,
-    suffix: "",
-    label: "Years in Industry",
+    suffix: "+",
+    label: "Years Experience",
     description: "Trusted since 2009"
   },
   {
@@ -70,7 +71,7 @@ const stats = [
     value: 24,
     suffix: "/7",
     label: "Support Available",
-    description: "Emergency response team"
+    description: "Always here for you"
   },
 ]
 
@@ -83,47 +84,65 @@ const certifications = [
 
 export function TrustSection() {
   return (
-    <section id="about" className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-secondary/50" />
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px]" />
-      
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-3xl mb-16 lg:mb-24">
-          <p className="text-accent font-medium mb-4 tracking-wide uppercase text-sm">The Al Barak Standard</p>
-          <h2 className="font-serif text-4xl lg:text-5xl font-medium text-foreground tracking-tight mb-6">
-            <span className="text-balance">Built on Trust. Delivered with Excellence.</span>
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            For over 15 years, we have been the trusted partner for enterprises, government facilities, and premium residential properties across the UAE. Our commitment to quality is not just a promise — it&apos;s our foundation.
-          </p>
+    <section id="about" className="relative py-20 lg:py-28 overflow-hidden bg-secondary/30">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left - Image */}
+          <div className="relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/team.jpg"
+                alt="Our professional team"
+                width={600}
+                height={500}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            {/* Experience Badge */}
+            <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-2xl shadow-xl">
+              <p className="text-4xl font-bold">15+</p>
+              <p className="text-sm">Years of Excellence</p>
+            </div>
+          </div>
+          
+          {/* Right - Content */}
+          <div>
+            <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">Who Are We?</p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight mb-6">
+              <span className="text-balance">A Team of Reliable Professionals</span>
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              With over 15 years of experience in technical services, our team of 30+ experts are here to help you with all your maintenance needs. Whether it is a complicated issue or one that just needs a quick fix, we will help you figure it out and fix it at the most affordable cost.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              We take pride in delivering exceptional quality and customer satisfaction across every project, from residential homes to large commercial facilities throughout the UAE.
+            </p>
+            
+            {/* Certifications */}
+            <div className="flex flex-wrap gap-3 mb-8">
+              {certifications.map((cert) => (
+                <div key={cert} className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border">
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
+                  <span className="text-sm text-foreground font-medium">{cert}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
         
         {/* Stats Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 lg:mt-24">
           {stats.map((stat) => (
             <div 
               key={stat.label}
-              className="p-8 rounded-2xl bg-background border border-border hover:border-accent/50 transition-colors group"
+              className="text-center p-8 rounded-2xl bg-card border border-border hover:shadow-lg hover:shadow-primary/5 transition-all group"
             >
-              <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
-                <stat.icon className="w-6 h-6 text-accent" />
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                <stat.icon className="w-8 h-8 text-primary" />
               </div>
               <AnimatedCounter end={stat.value} suffix={stat.suffix} />
-              <p className="text-foreground font-medium mt-2">{stat.label}</p>
+              <p className="text-foreground font-semibold mt-2">{stat.label}</p>
               <p className="text-sm text-muted-foreground mt-1">{stat.description}</p>
-            </div>
-          ))}
-        </div>
-        
-        {/* Certifications */}
-        <div className="flex flex-wrap items-center gap-6 p-6 rounded-2xl bg-background border border-border">
-          <span className="text-sm text-muted-foreground font-medium">Certifications:</span>
-          {certifications.map((cert) => (
-            <div key={cert} className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-accent" />
-              <span className="text-sm text-foreground">{cert}</span>
             </div>
           ))}
         </div>
