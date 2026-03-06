@@ -50,8 +50,14 @@ export async function generateMetadata({
   if (!service) return { title: "Service Not Found" }
 
   return {
-    title: `${service.title} | Al Barak Technical Services`,
+    title: service.title,
     description: service.heroDescription,
+    alternates: { canonical: `/services/${slug}` },
+    openGraph: {
+      title: `${service.title} | Al Barak Technical Services`,
+      description: service.heroDescription,
+      url: `/services/${slug}`,
+    },
   }
 }
 

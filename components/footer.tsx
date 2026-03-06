@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Phone, Mail, MapPin, Clock, ArrowRight, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -83,9 +84,13 @@ export function Footer() {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <Link href="/" className="inline-flex items-center gap-3 mb-6 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-background/50" aria-label="Al Barak Technical Services — Home">
-                <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center" aria-hidden="true">
-                  <span className="text-primary-foreground font-bold text-xl select-none">AB</span>
-                </div>
+                <Image
+                  src="/Logo.jpeg"
+                  alt="Al Barak Technical Services logo"
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 rounded-xl object-contain"
+                />
                 <div>
                   <span className="text-background font-semibold text-xl tracking-tight">Al Barak</span>
                   <span className="text-background/60 text-sm block leading-tight">Technical Services</span>
@@ -108,12 +113,12 @@ export function Footer() {
                   <span className="text-sm text-background/70">+971 4 555 1234</span>
                 </Link>
                 <Link
-                  href="mailto:info@albarak.ae"
+                  href="mailto:info@albarak.online"
                   className="flex items-center gap-3 hover:text-primary transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background/50"
-                  aria-label="Email info@albarak.ae"
+                  aria-label="Email info@albarak.online"
                 >
                   <Mail className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
-                  <span className="text-sm text-background/70">info@albarak.ae</span>
+                  <span className="text-sm text-background/70">info@albarak.online</span>
                 </Link>
               </address>
             </div>

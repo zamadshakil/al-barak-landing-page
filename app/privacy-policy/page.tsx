@@ -6,9 +6,11 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Al Barak Technical Services",
+  title: "Privacy Policy",
   description:
     "Learn how Al Barak Technical Services collects, uses, and protects your personal information.",
+  alternates: { canonical: "/privacy-policy" },
+  robots: { index: true, follow: true },
 }
 
 export default function PrivacyPolicyPage() {
@@ -115,7 +117,7 @@ export default function PrivacyPolicyPage() {
                   <li>Request deletion of your personal data (subject to legal obligations)</li>
                   <li>Withdraw consent for marketing communications at any time</li>
                 </ul>
-                <p>To exercise these rights, please contact us at <Link href="mailto:info@albarak.ae" className="text-primary hover:underline font-medium">info@albarak.ae</Link>.</p>
+                <p>To exercise these rights, please contact us at <Link href="mailto:info@albarak.online" className="text-primary hover:underline font-medium">info@albarak.online</Link>.</p>
               </PolicySection>
 
               <PolicySection number={8} title="Children's Privacy">
@@ -129,7 +131,7 @@ export default function PrivacyPolicyPage() {
               <PolicySection number={10} title="Contact Us">
                 <p>If you have any questions about this Privacy Policy, please contact us:</p>
                 <ul>
-                  <li><strong>Email:</strong> <Link href="mailto:info@albarak.ae" className="text-primary hover:underline font-medium">info@albarak.ae</Link></li>
+                  <li><strong>Email:</strong> <Link href="mailto:info@albarak.online" className="text-primary hover:underline font-medium">info@albarak.online</Link></li>
                   <li><strong>Phone:</strong> <Link href="tel:+97145551234" className="text-primary hover:underline font-medium">+971 4 555 1234</Link></li>
                   <li><strong>Address:</strong> Al Barak Technical Services LLC, Business Bay, Dubai, UAE</li>
                 </ul>

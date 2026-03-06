@@ -18,9 +18,16 @@ import { Footer } from "@/components/footer"
 import { services } from "@/lib/services"
 
 export const metadata: Metadata = {
-  title: "Our Services | Al Barak Technical Services",
+  title: "Our Services",
   description:
     "Professional plumbing, crane, HVAC, painting, electrical, and construction services across the UAE. Licensed experts, 24/7 emergency response.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Our Services | Al Barak Technical Services",
+    description:
+      "Professional plumbing, crane, HVAC, painting, electrical, and construction services across the UAE.",
+    url: "/services",
+  },
 }
 
 /* Map icon name → Lucide component */

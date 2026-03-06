@@ -28,8 +28,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "info@albarak.ae",
-    href: "mailto:info@albarak.ae",
+    value: "info@albarak.online",
+    href: "mailto:info@albarak.online",
     description: "We reply within 2 business hours",
   },
   {

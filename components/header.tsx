@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -57,9 +58,14 @@ export function Header() {
             className="flex items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
             aria-label="Al Barak Technical Services — Home"
           >
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center" aria-hidden="true">
-              <span className="text-primary-foreground font-bold text-lg select-none">AB</span>
-            </div>
+            <Image
+              src="/Logo.jpeg"
+              alt="Al Barak Technical Services logo"
+              width={40}
+              height={40}
+              className="w-10 h-10 rounded-lg object-contain"
+              priority
+            />
             <div className="hidden sm:block">
               <span className="text-foreground font-semibold text-lg tracking-tight">Al Barak</span>
               <span className="text-muted-foreground text-sm block leading-tight">Technical Services</span>

@@ -6,9 +6,11 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Al Barak Technical Services",
+  title: "Terms of Service",
   description:
     "Terms and conditions governing the use of Al Barak Technical Services website and services in the UAE.",
+  alternates: { canonical: "/terms-of-service" },
+  robots: { index: true, follow: true },
 }
 
 export default function TermsOfServicePage() {
@@ -145,7 +147,7 @@ export default function TermsOfServicePage() {
               <TermsSection number={13} title="Contact">
                 <p>For questions or concerns about these Terms, please contact:</p>
                 <ul>
-                  <li><strong>Email:</strong> <Link href="mailto:info@albarak.ae" className="text-primary hover:underline font-medium">info@albarak.ae</Link></li>
+                  <li><strong>Email:</strong> <Link href="mailto:info@albarak.online" className="text-primary hover:underline font-medium">info@albarak.online</Link></li>
                   <li><strong>Phone:</strong> <Link href="tel:+97145551234" className="text-primary hover:underline font-medium">+971 4 555 1234</Link></li>
                   <li><strong>Address:</strong> Al Barak Technical Services LLC, Business Bay, Dubai, UAE</li>
                 </ul>
