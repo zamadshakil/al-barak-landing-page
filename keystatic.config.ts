@@ -1,9 +1,30 @@
 import { config, fields, collection } from "@keystatic/core";
 
+/**
+ * Use GitHub storage only when the OAuth credentials are present.
+ * This way `next build` works locally (falls back to local mode)
+ * and only switches to GitHub mode on the deployed server where
+ * the env vars are set.
+ */
+const useGitHub = !!(
+  process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
+  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET
+);
+
+const storage = useGitHub
+  ? {
+      kind: "github" as const,
+      repo: {
+        owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "zamadshakil",
+        name:
+          process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO ??
+          "al-barak-landing-page",
+      },
+    }
+  : { kind: "local" as const };
+
 export default config({
-  storage: {
-    kind: "local",
-  },
+  storage,
 
   collections: {
     posts: collection({

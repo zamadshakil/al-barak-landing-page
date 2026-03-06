@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Protect the Keystatic CMS admin panel and API with HTTP Basic Auth.
+ * Protect the Keystatic CMS admin panel and API.
  *
- * Set these environment variables (in .env.local for dev, or in your host):
- *   KEYSTATIC_ADMIN_USER=admin
- *   KEYSTATIC_ADMIN_PASSWORD=<a-strong-random-password>
- *
- * Without these env vars the middleware blocks all access to /keystatic.
+ * Authentication strategy:
+ *   - GitHub storage mode (production with OAuth): Keystatic handles auth
+ *     via GitHub OAuth. The middleware lets requests through so the OAuth
+ *     flow can work.
+ *   - Local / fallback mode: HTTP Basic Auth using env vars
+ *     KEYSTATIC_ADMIN_USER and KEYSTATIC_ADMIN_PASSWORD.
  */
 
 const PROTECTED = ["/keystatic", "/api/keystatic"];
@@ -23,17 +24,28 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // When GitHub OAuth is configured, Keystatic handles its own auth.
+  // Let all /keystatic requests pass through to the OAuth flow.
+  const hasGitHubOAuth = !!(
+    process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
+    process.env.KEYSTATIC_GITHUB_CLIENT_SECRET
+  );
+
+  if (hasGitHubOAuth) {
+    return NextResponse.next();
+  }
+
+  // ── Fallback: HTTP Basic Auth ──────────────────────────────────────
   const expectedUser = process.env.KEYSTATIC_ADMIN_USER;
   const expectedPass = process.env.KEYSTATIC_ADMIN_PASSWORD;
 
-  // If credentials aren't configured, block access entirely in production
+  // If no credentials at all are configured, block in prod, allow in dev
   if (!expectedUser || !expectedPass) {
     if (process.env.NODE_ENV === "production") {
       return new NextResponse("Forbidden – CMS credentials not configured.", {
         status: 403,
       });
     }
-    // In development, allow access without auth for convenience
     return NextResponse.next();
   }
 
