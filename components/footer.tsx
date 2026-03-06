@@ -48,7 +48,7 @@ export function Footer() {
             <Button
               asChild
               size="lg"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 h-16 px-10 text-lg font-semibold group shadow-xl"
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/80 h-16 px-10 text-lg font-semibold group shadow-xl"
             >
               <Link href="tel:+97145551234" aria-label="Call us at +971 4 555 1234">
                 <Phone className="w-5 h-5 mr-3" aria-hidden="true" />
@@ -60,7 +60,7 @@ export function Footer() {
               asChild
               size="lg"
               variant="outline"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 h-16 px-10 text-lg font-medium"
+              className="border-primary-foreground/60 text-primary-foreground hover:bg-primary-foreground/20 h-16 px-10 text-lg font-medium"
             >
               <Link
                 href="https://wa.me/97145551234"

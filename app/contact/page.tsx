@@ -338,7 +338,7 @@ export default function ContactPage() {
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full h-14 text-base font-medium"
+                    className="w-full h-14 text-base font-medium border-foreground/20 hover:bg-primary/5 hover:border-primary/40"
                   >
                     <a
                       href="https://wa.me/97145551234"

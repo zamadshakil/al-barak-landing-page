@@ -47,7 +47,7 @@ export function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-border text-foreground hover:bg-secondary h-14 px-8 text-base font-medium"
+                className="border-primary/40 text-foreground hover:bg-primary/5 hover:border-primary/60 h-14 px-8 text-base font-medium"
               >
                 <Link href="/services">View Our Services</Link>
               </Button>

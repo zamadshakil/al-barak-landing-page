@@ -227,7 +227,7 @@ export default function ServicesPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 h-14 px-10 text-base font-semibold shadow-xl"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/80 h-14 px-10 text-base font-semibold shadow-xl"
               >
                 <Link href="/contact">
                   Contact Us
@@ -238,7 +238,7 @@ export default function ServicesPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 h-14 px-10 text-base"
+                className="border-primary-foreground/60 text-primary-foreground hover:bg-primary-foreground/20 h-14 px-10 text-base"
               >
                 <Link href="tel:+97145551234" aria-label="Call +971 4 555 1234">
                   <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
