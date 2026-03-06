@@ -63,75 +63,77 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="relative py-20 lg:py-28 bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="services" className="relative py-12 sm:py-20 lg:py-28 bg-background" aria-labelledby="services-heading">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">How Can We Help You?</p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <p className="text-primary font-semibold mb-2 sm:mb-3 tracking-wide uppercase text-xs sm:text-sm">How Can We Help You?</p>
+          <h2 id="services-heading" className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight mb-4 sm:mb-6">
             <span className="text-balance">Our Professional Services</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed px-2">
             With over 15 years of experience, our team of experts is ready to tackle any project, big or small.
           </p>
         </div>
         
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {services.map((service) => (
-            <div 
+            <article 
               key={service.title}
-              className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1"
+              className="group bg-card rounded-xl sm:rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1"
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <Image
                   src={service.image}
-                  alt={service.title}
+                  alt={`${service.title} - professional service in action`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
-                <div className={`absolute top-4 left-4 w-12 h-12 rounded-xl ${service.color === 'primary' ? 'bg-primary' : 'bg-accent'} flex items-center justify-center shadow-lg`}>
-                  <service.icon className="w-6 h-6 text-primary-foreground" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" aria-hidden="true" />
+                <div className={`absolute top-3 left-3 sm:top-4 sm:left-4 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl ${service.color === 'primary' ? 'bg-primary' : 'bg-accent'} flex items-center justify-center shadow-lg`}>
+                  <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" aria-hidden="true" />
                 </div>
               </div>
               
               {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-3">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2 sm:mb-3">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                <p className="text-muted-foreground mb-3 sm:mb-4 leading-relaxed text-sm line-clamp-3">
                   {service.description}
                 </p>
                 
                 {/* Features */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                   {service.features.map((feature) => (
                     <span 
                       key={feature}
-                      className="px-3 py-1 text-xs font-medium text-muted-foreground bg-secondary rounded-full"
+                      className="px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-muted-foreground bg-secondary rounded-full"
                     >
                       {feature}
                     </span>
                   ))}
                 </div>
                 
-                <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80 font-medium group/btn">
+                <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80 font-medium group/btn text-sm">
                   Learn More 
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-1.5 sm:ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
                 </Button>
               </div>
-            </div>
+            </article>
           ))}
         </div>
         
         {/* CTA */}
-        <div className="mt-16 text-center">
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 shadow-lg shadow-primary/25">
-            View All Services
-            <ArrowRight className="ml-2 w-5 h-5" />
+        <div className="mt-10 sm:mt-16 text-center">
+          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base shadow-lg shadow-primary/25" asChild>
+            <a href="#contact">
+              Request a Free Quote
+              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+            </a>
           </Button>
         </div>
       </div>
