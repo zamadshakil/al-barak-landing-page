@@ -1,7 +1,28 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { motion, Variants } from "framer-motion"
 import { Phone, ClipboardCheck, Ruler, Hammer, ThumbsUp, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: { staggerChildren: 0.2 },
+    },
+}
+
+const fadeLeft: Variants = {
+    hidden: { opacity: 0, x: -30 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+}
+
+const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+}
 
 const steps = [
     {
@@ -46,7 +67,13 @@ export function ProcessSection() {
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="text-center max-w-3xl mx-auto mb-16"
+                >
                     <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">
                         Simple & Transparent
                     </p>
@@ -59,11 +86,17 @@ export function ProcessSection() {
                     <p className="text-lg text-muted-foreground leading-relaxed">
                         From your first call to project handover — we keep it straightforward, professional, and stress-free.
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* ── Left — Image + floating badge ─────────────────────── */}
-                    <div className="relative order-2 lg:order-1">
+                    <motion.div
+                        variants={fadeLeft}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="relative order-2 lg:order-1"
+                    >
                         {/* Decorative blobs */}
                         <div className="absolute -top-10 -left-10 w-56 h-56 bg-primary/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
                         <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-accent/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
@@ -105,11 +138,17 @@ export function ProcessSection() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* ── Right — Process Steps ─────────────────────────────── */}
                     <div className="order-1 lg:order-2">
-                        <ol className="relative space-y-6 list-none">
+                        <motion.ol
+                            variants={staggerContainer}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true, margin: "-50px" }}
+                            className="relative space-y-6 list-none"
+                        >
                             {/* Vertical connecting line */}
                             <div
                                 className="absolute left-5 top-8 bottom-8 w-px bg-gradient-to-b from-primary/30 via-accent/30 to-primary/30 hidden sm:block"
@@ -117,7 +156,7 @@ export function ProcessSection() {
                             />
 
                             {steps.map((step) => (
-                                <li key={step.number} className="relative flex gap-4 sm:gap-5 group">
+                                <motion.li variants={fadeUp} key={step.number} className="relative flex gap-4 sm:gap-5 group">
                                     {/* Step Number Circle */}
                                     <div
                                         className={`relative z-10 shrink-0 w-10 h-10 rounded-full ${step.accent} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
@@ -137,9 +176,9 @@ export function ProcessSection() {
                                             {step.description}
                                         </p>
                                     </div>
-                                </li>
+                                </motion.li>
                             ))}
-                        </ol>
+                        </motion.ol>
 
                         {/* CTA */}
                         <div className="mt-8 ml-14 sm:ml-[60px]">
@@ -157,6 +196,6 @@ export function ProcessSection() {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }

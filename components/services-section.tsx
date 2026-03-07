@@ -1,5 +1,8 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { motion, Variants } from "framer-motion"
 import {
   Droplets,
   Paintbrush,
@@ -30,12 +33,31 @@ const iconMap: Record<string, LucideIcon> = {
   Shield,
 }
 
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+}
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+}
+
 export function ServicesSection() {
   return (
     <section id="services" className="relative py-20 lg:py-28 bg-background" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">How Can We Help You?</p>
           <h2 id="services-heading" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight mb-6">
             Our Professional Services
@@ -43,14 +65,22 @@ export function ServicesSection() {
           <p className="text-lg text-muted-foreground leading-relaxed">
             Licensed and experienced professionals ready to tackle any project, big or small. Explore our full range of contracting and technical services.
           </p>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          role="list"
+        >
           {services.slice(0, 6).map((service) => {
             const Icon = iconMap[service.icon] ?? HardHat
             return (
-              <article
+              <motion.article
+                variants={fadeUp}
                 key={service.slug}
                 className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
                 role="listitem"
@@ -102,10 +132,10 @@ export function ServicesSection() {
                     <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
                   </Link>
                 </div>
-              </article>
+              </motion.article>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* CTA */}
         <div className="mt-16 text-center">

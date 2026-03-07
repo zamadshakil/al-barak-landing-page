@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
+import { motion, Variants } from "framer-motion"
 import {
   CheckCircle2,
   Users,
@@ -138,6 +139,19 @@ const certifications = [
   "Civil Defense Certified",
 ]
 
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+}
+
+const slideUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+}
+
 export function TrustSection() {
   return (
     <section id="about" className="relative py-20 lg:py-28 overflow-hidden bg-secondary/30" aria-labelledby="about-heading">
@@ -151,9 +165,18 @@ export function TrustSection() {
             <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-accent/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
 
             {/* 2×2 Card Grid */}
-            <div className="relative grid grid-cols-2 gap-4" role="list" aria-label="Our core strengths">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+              className="relative grid grid-cols-2 gap-4"
+              role="list"
+              aria-label="Our core strengths"
+            >
               {strengths.map((item, index) => (
-                <div
+                <motion.div
+                  variants={slideUp}
                   key={item.title}
                   className={`group relative bg-card rounded-2xl border border-border p-5 sm:p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${index === 1 ? "mt-6" : index === 2 ? "-mt-6" : ""
                     }`}
@@ -174,9 +197,9 @@ export function TrustSection() {
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {item.description}
                   </p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Floating Experience Badge */}
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 lg:-bottom-6 lg:left-auto lg:translate-x-0 lg:-right-6 z-10">
@@ -191,7 +214,12 @@ export function TrustSection() {
           </div>
 
           {/* ── Right — Content ────────────────────────────────────── */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
             <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">Who We Are</p>
             <h2 id="about-heading" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight mb-6">
               Built on Trust,{" "}
@@ -239,13 +267,22 @@ export function TrustSection() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* ── Stats Grid ──────────────────────────────────────────── */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 lg:mt-24" role="list" aria-label="Company statistics">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 lg:mt-24"
+          role="list"
+          aria-label="Company statistics"
+        >
           {stats.map((stat) => (
-            <div
+            <motion.div
+              variants={slideUp}
               key={stat.label}
               className="text-center p-8 rounded-2xl bg-card border border-border hover:shadow-lg hover:shadow-primary/5 transition-all group"
               role="listitem"
@@ -256,9 +293,9 @@ export function TrustSection() {
               <AnimatedCounter end={stat.value} suffix={stat.suffix} />
               <p className="text-foreground font-semibold mt-2">{stat.label}</p>
               <p className="text-sm text-muted-foreground mt-1">{stat.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

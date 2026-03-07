@@ -1,8 +1,14 @@
 "use client"
 
 import { useState, useCallback, useEffect } from "react"
+import { motion, Variants } from "framer-motion"
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+}
 
 const testimonials = [
   {
@@ -96,7 +102,13 @@ export function TestimonialsSection() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUp}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">
             What Our Customers Say
           </p>
@@ -109,10 +121,14 @@ export function TestimonialsSection() {
           <p className="text-lg text-muted-foreground leading-relaxed">
             Do not just take our word for it. Here is what our satisfied customers have to say about our services.
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials Carousel */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
           className="relative max-w-4xl mx-auto"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
@@ -194,18 +210,24 @@ export function TestimonialsSection() {
                 role="tab"
                 aria-selected={i === currentIndex}
                 className={`h-3 rounded-full transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${i === currentIndex
-                    ? "bg-primary w-8"
-                    : "bg-border w-3 hover:bg-primary/40"
+                  ? "bg-primary w-8"
+                  : "bg-border w-3 hover:bg-primary/40"
                   }`}
                 onClick={() => setCurrentIndex(i)}
                 aria-label={`Go to testimonial by ${t.name}`}
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Mini Testimonials Preview */}
-        <div className="grid md:grid-cols-3 gap-6 mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-3 gap-6 mt-12"
+        >
           {testimonials
             .filter((_, i) => i !== currentIndex)
             .slice(0, 3)
@@ -240,7 +262,7 @@ export function TestimonialsSection() {
                 </div>
               </button>
             ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
