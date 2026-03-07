@@ -1,3 +1,4 @@
+import { makeRouteHandler } from "@keystatic/next/route-handler";
 import keystaticConfig from "@/keystatic.config";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -8,12 +9,24 @@ const clientSecret = process.env.KEYSTATIC_GITHUB_CLIENT_SECRET!;
 const secret = process.env.KEYSTATIC_SECRET!;
 
 /* ------------------------------------------------------------------ */
-/*  Custom OAuth handler that supports BOTH expiring and non-expiring  */
-/*  GitHub tokens. Keystatic's built-in makeRouteHandler only supports */
-/*  expiring tokens — this handler works either way.                   */
+/*  Hybrid handler:                                                    */
+/*  - Custom OAuth routes (login, callback, logout, refresh)           */
+/*    → works with non-expiring GitHub tokens                          */
+/*  - Everything else (content API)                                    */
+/*    → delegated to Keystatic's built-in makeRouteHandler             */
 /* ------------------------------------------------------------------ */
 
-// ── Cookie helper (no external dependency) ───────────────────────────
+// ── Keystatic's built-in handler (for content API routes) ────────────
+const keystatic = makeRouteHandler({
+  config: keystaticConfig,
+  clientId,
+  clientSecret,
+  secret,
+});
+
+// ── Cookie helpers ───────────────────────────────────────────────────
+const isProd = process.env.NODE_ENV === "production";
+
 function serializeCookie(
   name: string,
   value: string,
@@ -38,8 +51,6 @@ function parseCookies(header: string | null): Record<string, string> {
   return result;
 }
 
-const isProd = process.env.NODE_ENV === "production";
-
 // ── Token Exchange ───────────────────────────────────────────────────
 async function exchangeCodeForToken(code: string) {
   const url = new URL("https://github.com/login/oauth/access_token");
@@ -58,8 +69,7 @@ async function exchangeCodeForToken(code: string) {
 
 // ── Cookie builders ──────────────────────────────────────────────────
 function makeTokenCookies(accessToken: string, expiresIn?: number): string[] {
-  // 1 year fallback for non-expiring tokens
-  const maxAge = expiresIn ?? 60 * 60 * 24 * 365;
+  const maxAge = expiresIn ?? 60 * 60 * 24 * 365; // 1 year for non-expiring tokens
   return [
     serializeCookie("keystatic-gh-access-token", accessToken, {
       sameSite: "Lax",
@@ -77,7 +87,7 @@ function expireCookies(): string[] {
   ];
 }
 
-// ── OAuth Callback ───────────────────────────────────────────────────
+// ── Custom OAuth Routes ──────────────────────────────────────────────
 async function handleOAuthCallback(req: NextRequest) {
   const url = new URL(req.url);
   const code = url.searchParams.get("code");
@@ -96,14 +106,12 @@ async function handleOAuthCallback(req: NextRequest) {
     return new NextResponse("Authorization failed", { status: 401 });
   }
 
-  // Set the access token cookie and redirect to Keystatic
   const cookies = makeTokenCookies(tokenData.access_token, tokenData.expires_in);
   const res = NextResponse.redirect(new URL("/keystatic", url.origin), 307);
   cookies.forEach((c) => res.headers.append("Set-Cookie", c));
   return res;
 }
 
-// ── Login Redirect ───────────────────────────────────────────────────
 function handleLogin(req: NextRequest) {
   const reqUrl = new URL(req.url);
   const authUrl = new URL("https://github.com/login/oauth/authorize");
@@ -115,7 +123,6 @@ function handleLogin(req: NextRequest) {
   return NextResponse.redirect(authUrl.toString(), 307);
 }
 
-// ── Logout ───────────────────────────────────────────────────────────
 async function handleLogout(req: NextRequest) {
   const cookies = parseCookies(req.headers.get("cookie"));
   const accessToken = cookies["keystatic-gh-access-token"];
@@ -136,15 +143,12 @@ async function handleLogout(req: NextRequest) {
   return res;
 }
 
-// ── Refresh Token (returns 401 — non-expiring tokens don't refresh) ─
 function handleRefreshToken() {
   // Non-expiring tokens don't need refreshing.
-  // If Keystatic asks, just say "no refresh needed" by returning 401.
-  // It will fall back to using the existing access token cookie.
   return NextResponse.json({ error: "Token refresh not supported" }, { status: 401 });
 }
 
-// ── Main Router ──────────────────────────────────────────────────────
+// ── Path helper ──────────────────────────────────────────────────────
 function getPath(req: NextRequest) {
   return new URL(req.url).pathname
     .replace(/^\/api\/keystatic\/?/, "")
@@ -153,30 +157,46 @@ function getPath(req: NextRequest) {
     .join("/");
 }
 
-export async function GET(req: NextRequest) {
+// OAuth routes we handle ourselves
+const CUSTOM_ROUTES = new Set([
+  "github/oauth/callback",
+  "github/login",
+  "github/logout",
+  "github/refresh-token",
+  "github/repo-not-found",
+]);
+
+// ── Main Exports ─────────────────────────────────────────────────────
+export async function GET(req: NextRequest, context: any) {
   const path = getPath(req);
-  switch (path) {
-    case "github/oauth/callback":
-      return handleOAuthCallback(req);
-    case "github/login":
-      return handleLogin(req);
-    case "github/logout":
-      return handleLogout(req);
-    case "github/refresh-token":
-      return handleRefreshToken();
-    case "github/repo-not-found":
-      return handleLogin(req);
-    default:
-      return new NextResponse("Not Found", { status: 404 });
+
+  // Handle OAuth routes ourselves (bypasses Keystatic's token validation)
+  if (CUSTOM_ROUTES.has(path)) {
+    switch (path) {
+      case "github/oauth/callback":
+        return handleOAuthCallback(req);
+      case "github/login":
+        return handleLogin(req);
+      case "github/logout":
+        return handleLogout(req);
+      case "github/refresh-token":
+        return handleRefreshToken();
+      case "github/repo-not-found":
+        return handleLogin(req);
+    }
   }
+
+  // Everything else → Keystatic's built-in handler (content API)
+  return keystatic.GET(req, context);
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest, context: any) {
   const path = getPath(req);
-  switch (path) {
-    case "github/refresh-token":
-      return handleRefreshToken();
-    default:
-      return new NextResponse("Not Found", { status: 404 });
+
+  if (path === "github/refresh-token") {
+    return handleRefreshToken();
   }
+
+  // Everything else → Keystatic's built-in handler
+  return keystatic.POST(req, context);
 }
