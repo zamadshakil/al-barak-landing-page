@@ -12,6 +12,7 @@ import {
   Send,
   CheckCircle,
   Building2,
+  AlertTriangle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Header } from "@/components/header"
@@ -20,41 +21,45 @@ import { Footer } from "@/components/footer"
 const contactInfo = [
   {
     icon: Phone,
-    label: "Phone",
-    value: "+971 4 555 1234",
-    href: "tel:+97145551234",
-    description: "Available 24/7 for emergencies",
+    label: "Amir Hussain",
+    value: "+971 56 955 6726",
+    href: "tel:+971569556726",
+    description: "Primary contact",
+  },
+  {
+    icon: Phone,
+    label: "Abuzar",
+    value: "+971 50 878 2516",
+    href: "tel:+971508782516",
+    description: "Secondary contact",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@albarak.online",
-    href: "mailto:info@albarak.online",
+    value: "mahrabuzar143@gmail.com",
+    href: "mailto:mahrabuzar143@gmail.com",
     description: "We reply within 2 business hours",
-  },
-  {
-    icon: MapPin,
-    label: "Office",
-    value: "Business Bay, Dubai, UAE",
-    href: "https://maps.google.com/?q=Business+Bay+Dubai+UAE",
-    description: "Visit us Mon–Sat 8 AM – 6 PM",
   },
   {
     icon: MessageCircle,
     label: "WhatsApp",
     value: "Send a message",
-    href: "https://wa.me/97145551234",
+    href: "https://wa.me/971569556726",
     description: "Quick responses on WhatsApp",
   },
 ]
 
 const serviceOptions = [
-  "Plumbing & Drain Cleaning",
-  "Heavy Crane Services",
-  "HVAC & AC Maintenance",
-  "Painting & Decor",
-  "Electrical Services",
-  "General Construction",
+  "Painting Contracting",
+  "Carpentry & Wood Flooring Works",
+  "Glass & Aluminum Installation & Maintenance",
+  "Floor & Wall Tiling Works",
+  "Metal Parts & Erections Contracting",
+  "Steel Products Installation & Maintenance",
+  "Plumbing & Sanitary Installation",
+  "Plaster Works",
+  "Sanitary Installation & Pipes Repairing",
+  "Insulation Contracting",
   "Other / Multiple Services",
 ]
 
@@ -99,7 +104,7 @@ export default function ContactPage() {
               Get in <span className="text-primary">Touch</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Have a project in mind or need an urgent repair? Reach out and our
+              Have a project in mind or need urgent technical services? Reach out and our
               team will get back to you within hours — not days.
             </p>
           </div>
@@ -113,8 +118,8 @@ export default function ContactPage() {
                 <a
                   key={item.label}
                   href={item.href}
-                  target={item.label === "WhatsApp" || item.label === "Office" ? "_blank" : undefined}
-                  rel={item.label === "WhatsApp" || item.label === "Office" ? "noopener noreferrer" : undefined}
+                  target={item.label === "WhatsApp" ? "_blank" : undefined}
+                  rel={item.label === "WhatsApp" ? "noopener noreferrer" : undefined}
                   className="group flex flex-col items-center text-center p-6 bg-card rounded-2xl border border-border hover:shadow-lg hover:border-primary/30 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors" aria-hidden="true">
@@ -280,15 +285,15 @@ export default function ContactPage() {
 
               {/* Right Column — Business Info */}
               <div className="lg:col-span-2 space-y-8">
-                {/* Map placeholder */}
+                {/* Map / Address placeholder */}
                 <div className="relative overflow-hidden rounded-2xl border border-border bg-card aspect-4/3">
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-secondary/30">
                     <Building2 className="w-12 h-12 text-primary/40 mb-4" aria-hidden="true" />
-                    <p className="font-semibold text-foreground mb-1">Al Barak Technical Services</p>
-                    <p className="text-sm text-muted-foreground mb-4">Business Bay, Dubai, UAE</p>
+                    <p className="font-semibold text-foreground mb-1">AL BARZAK TECHNICAL SERVICES L.L.C</p>
+                    <p className="text-sm text-muted-foreground mb-4">First Floor, Office 101, AL ZAHRA TECHNO CENTER, Dubai, UAE</p>
                     <Button asChild variant="outline" size="sm">
                       <a
-                        href="https://maps.google.com/?q=Business+Bay+Dubai+UAE"
+                        href="https://maps.google.com/?q=AL+ZAHRA+TECHNO+CENTER+Dubai+UAE"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -296,6 +301,19 @@ export default function ContactPage() {
                         <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                       </a>
                     </Button>
+                  </div>
+                </div>
+
+                {/* Visitor Instructions */}
+                <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-2xl p-5">
+                  <div className="flex items-start gap-3">
+                    <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-amber-900 dark:text-amber-200 text-sm mb-1">Visitor Instructions</p>
+                      <p className="text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
+                        Please use the lift to come to the first floor. Do not use the escalators/electric stairs.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -330,9 +348,19 @@ export default function ContactPage() {
                     asChild
                     className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-14 text-base font-medium shadow-lg shadow-primary/20"
                   >
-                    <Link href="tel:+97145551234" aria-label="Call us at +971 4 555 1234">
+                    <Link href="tel:+971569556726" aria-label="Call Amir at +971 56 955 6726">
                       <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
-                      Call +971 4 555 1234
+                      Call Amir: +971 56 955 6726
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full h-14 text-base font-medium border-foreground/20 hover:bg-primary/5 hover:border-primary/40"
+                  >
+                    <Link href="tel:+971508782516" aria-label="Call Abuzar at +971 50 878 2516">
+                      <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
+                      Call Abuzar: +971 50 878 2516
                     </Link>
                   </Button>
                   <Button
@@ -341,7 +369,7 @@ export default function ContactPage() {
                     className="w-full h-14 text-base font-medium border-foreground/20 hover:bg-primary/5 hover:border-primary/40"
                   >
                     <a
-                      href="https://wa.me/97145551234"
+                      href="https://wa.me/971569556726"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Message us on WhatsApp"

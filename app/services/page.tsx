@@ -3,11 +3,15 @@ import Image from "next/image"
 import Link from "next/link"
 import {
   Droplets,
-  Container,
-  Wind,
   Paintbrush,
-  Zap,
+  Hammer,
+  Layers,
+  Grid3X3,
   HardHat,
+  Wrench,
+  PaintBucket,
+  Pipette,
+  Shield,
   ArrowRight,
   Phone,
   type LucideIcon,
@@ -20,24 +24,28 @@ import { services } from "@/lib/services"
 export const metadata: Metadata = {
   title: "Our Services",
   description:
-    "Professional plumbing, crane, HVAC, painting, electrical, and construction services across the UAE. Licensed experts, 24/7 emergency response.",
+    "Professional painting, carpentry, glass & aluminium, tiling, metal works, plumbing, plastering, and insulation services across Dubai, UAE. Licensed experts.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Our Services | Al Barak Technical Services",
+    title: "Our Services | AL BARZAK Technical Services",
     description:
-      "Professional plumbing, crane, HVAC, painting, electrical, and construction services across the UAE.",
+      "Professional contracting and technical services across Dubai, UAE. Licensed and insured professionals.",
     url: "/services",
   },
 }
 
 /* Map icon name → Lucide component */
 const iconMap: Record<string, LucideIcon> = {
-  Droplets,
-  Container,
-  Wind,
   Paintbrush,
-  Zap,
+  Hammer,
+  Layers,
+  Grid3X3,
   HardHat,
+  Wrench,
+  Droplets,
+  PaintBucket,
+  Pipette,
+  Shield,
 }
 
 export default function ServicesPage() {
@@ -75,8 +83,8 @@ export default function ServicesPage() {
               <span className="text-primary">Technical Services</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              From routine maintenance to complex projects, Al Barak delivers
-              reliable, high-quality solutions across the UAE. Explore our full
+              From painting and carpentry to plumbing and insulation, AL BARZAK delivers
+              reliable, high-quality contracting solutions across Dubai. Explore our full
               range of services below.
             </p>
           </div>
@@ -109,11 +117,10 @@ export default function ServicesPage() {
                         aria-hidden="true"
                       />
                       <div
-                        className={`absolute top-4 left-4 w-12 h-12 rounded-xl ${
-                          service.color === "primary"
+                        className={`absolute top-4 left-4 w-12 h-12 rounded-xl ${service.color === "primary"
                             ? "bg-primary"
                             : "bg-accent"
-                        } flex items-center justify-center shadow-lg`}
+                          } flex items-center justify-center shadow-lg`}
                         aria-hidden="true"
                       >
                         <Icon className="w-6 h-6 text-primary-foreground" />
@@ -172,14 +179,14 @@ export default function ServicesPage() {
               id="why-us-heading"
               className="font-serif text-3xl sm:text-4xl font-semibold text-foreground tracking-tight mb-12"
             >
-              Why Choose <span className="text-primary">Al Barak</span>?
+              Why Choose <span className="text-primary">AL BARZAK</span>?
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  stat: "15+",
-                  label: "Years of Experience",
-                  desc: "Serving the UAE since 2009",
+                  stat: "10+",
+                  label: "Licensed Services",
+                  desc: "Fully licensed in Dubai",
                 },
                 {
                   stat: "2,500+",
@@ -247,9 +254,9 @@ export default function ServicesPage() {
                 variant="outline"
                 className="border-primary-foreground/60 bg-transparent text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground h-14 px-10 text-base"
               >
-                <Link href="tel:+97145551234" aria-label="Call +971 4 555 1234">
+                <Link href="tel:+971569556726" aria-label="Call +971 56 955 6726">
                   <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
-                  +971 4 555 1234
+                  +971 56 955 6726
                 </Link>
               </Button>
             </div>

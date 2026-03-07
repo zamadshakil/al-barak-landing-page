@@ -7,12 +7,12 @@ export function Hero() {
   return (
     <section
       className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-linear-to-b from-secondary/50 via-background to-background"
-      aria-label="Welcome to Al Barak Technical Services"
+      aria-label="Welcome to AL BARZAK Technical Services"
     >
       {/* Decorative blobs — hidden from assistive tech */}
       <div className="absolute top-40 right-20 w-72 h-72 bg-primary/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
-      
+
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
@@ -21,17 +21,17 @@ export function Hero() {
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" aria-hidden="true" />
               <span className="text-sm text-primary font-medium">24/7 Emergency Services Available</span>
             </div>
-            
+
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground leading-[1.1]">
               The Most Reliable{" "}
               <span className="text-primary">Technical Services</span>{" "}
               in UAE!
             </h1>
-            
+
             <p className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              We can supply you with top of the line plumbing, crane services, painting, construction, HVAC, and much more! Our team of experts is here to help you.
+              Professional painting, carpentry, glass & aluminium, tiling, steel works, plumbing, and insulation services across Dubai. Licensed experts ready to serve you.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 asChild
@@ -52,7 +52,7 @@ export function Hero() {
                 <Link href="/services">View Our Services</Link>
               </Button>
             </div>
-            
+
             {/* Trust Badges */}
             <ul className="flex flex-wrap gap-6 pt-4 list-none" aria-label="Key benefits">
               <li className="flex items-center gap-3">
@@ -75,13 +75,13 @@ export function Hero() {
               </li>
             </ul>
           </div>
-          
+
           {/* Right Content - Hero Image with Stats */}
           <div className="relative hidden sm:block">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-4/5">
               <Image
                 src="/images/hero-technician.jpg"
-                alt="Al Barak technician in uniform performing a safety inspection on-site in Dubai"
+                alt="AL BARZAK technician in uniform performing a safety inspection on-site in Dubai"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -90,7 +90,7 @@ export function Hero() {
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-linear-to-t from-foreground/20 to-transparent" aria-hidden="true" />
             </div>
-            
+
             {/* Floating Stats Cards — only visible on large screens to prevent overflow */}
             <div className="hidden lg:flex absolute -left-6 top-1/4 bg-card p-4 rounded-2xl shadow-xl border border-border items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center" aria-hidden="true">
@@ -101,7 +101,7 @@ export function Hero() {
                 <p className="text-sm text-muted-foreground">Projects Done</p>
               </div>
             </div>
-            
+
             <div className="hidden lg:flex absolute -right-4 bottom-1/4 bg-card p-4 rounded-2xl shadow-xl border border-border items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center" aria-hidden="true">
                 <span className="text-xl font-bold text-accent">98%</span>

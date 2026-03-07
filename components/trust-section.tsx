@@ -113,7 +113,7 @@ export function TrustSection() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-6/5">
               <Image
                 src="/images/team.jpg"
-                alt="Al Barak team of technicians in safety gear at a project site in Dubai"
+                alt="AL BARZAK team of technicians in safety gear at a project site in Dubai"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -125,7 +125,7 @@ export function TrustSection() {
               <p className="text-sm font-medium">Years of Excellence</p>
             </div>
           </div>
-          
+
           {/* Right - Content */}
           <div>
             <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">Who Are We?</p>
@@ -138,7 +138,7 @@ export function TrustSection() {
             <p className="text-muted-foreground leading-relaxed mb-8">
               We take pride in delivering exceptional quality and customer satisfaction across every project, from residential homes to large commercial facilities throughout the UAE.
             </p>
-            
+
             {/* Certifications */}
             <ul className="flex flex-wrap gap-3 mb-8 list-none" aria-label="Certifications">
               {certifications.map((cert) => (
@@ -150,11 +150,11 @@ export function TrustSection() {
             </ul>
           </div>
         </div>
-        
+
         {/* Stats Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 lg:mt-24" role="list" aria-label="Company statistics">
           {stats.map((stat) => (
-            <div 
+            <div
               key={stat.label}
               className="text-center p-8 rounded-2xl bg-card border border-border hover:shadow-lg hover:shadow-primary/5 transition-all group"
               role="listitem"

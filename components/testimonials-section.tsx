@@ -20,7 +20,7 @@ const testimonials = [
     role: "Facilities Director",
     company: "Dubai Marina Residences",
     content:
-      "Al Barak Technical Services was commended for their speedy response, flexible appointments, and reasonable pricing. Had great satisfaction with their work. They are always my first call!",
+      "AL BARZAK Technical Services was commended for their speedy response, flexible appointments, and reasonable pricing. Had great satisfaction with their work. They are always my first call!",
     rating: 5,
   },
   {
@@ -38,7 +38,7 @@ const testimonials = [
     role: "General Manager",
     company: "The Palms Hotel Group",
     content:
-      "In hospitality, we cannot afford downtime. Al Barak understands this and delivers accordingly. Their 24/7 availability and rapid response has saved us countless times. Truly reliable partners we can count on!",
+      "In hospitality, we cannot afford downtime. AL BARZAK understands this and delivers accordingly. Their 24/7 availability and rapid response has saved us countless times. Truly reliable partners we can count on!",
     rating: 5,
   },
 ]
@@ -193,11 +193,10 @@ export function TestimonialsSection() {
                 key={t.id}
                 role="tab"
                 aria-selected={i === currentIndex}
-                className={`h-3 rounded-full transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
-                  i === currentIndex
+                className={`h-3 rounded-full transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${i === currentIndex
                     ? "bg-primary w-8"
                     : "bg-border w-3 hover:bg-primary/40"
-                }`}
+                  }`}
                 onClick={() => setCurrentIndex(i)}
                 aria-label={`Go to testimonial by ${t.name}`}
               />

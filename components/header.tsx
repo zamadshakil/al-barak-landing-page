@@ -45,9 +45,8 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-xl border-b transition-shadow duration-300 ${
-        scrolled ? "border-border shadow-md" : "border-transparent shadow-none"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-xl border-b transition-shadow duration-300 ${scrolled ? "border-border shadow-md" : "border-transparent shadow-none"
+        }`}
       role="banner"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -56,18 +55,18 @@ export function Header() {
           <Link
             href="/"
             className="flex items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-            aria-label="Al Barak Technical Services — Home"
+            aria-label="AL BARZAK Technical Services — Home"
           >
             <Image
               src="/Logo.jpeg"
-              alt="Al Barak Technical Services logo"
+              alt="AL BARZAK Technical Services logo"
               width={40}
               height={40}
               className="w-10 h-10 rounded-lg object-contain"
               priority
             />
             <div className="hidden sm:block">
-              <span className="text-foreground font-semibold text-lg tracking-tight">Al Barak</span>
+              <span className="text-foreground font-semibold text-lg tracking-tight">AL BARZAK</span>
               <span className="text-muted-foreground text-sm block leading-tight">Technical Services</span>
             </div>
           </Link>
@@ -88,12 +87,12 @@ export function Header() {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Link
-              href="tel:+97145551234"
+              href="tel:+971569556726"
               className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              aria-label="Call us at +971 4 555 1234"
+              aria-label="Call us at +971 56 955 6726"
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
-              <span>+971 4 555 1234</span>
+              <span>+971 56 955 6726</span>
             </Link>
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm">
               <Link href="/contact">Get a Quote</Link>
@@ -117,9 +116,8 @@ export function Header() {
       {/* Mobile Menu — slide-down with animation */}
       <div
         id="mobile-menu"
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileMenuOpen ? "max-h-112 opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? "max-h-112 opacity-100" : "max-h-0 opacity-0"
+          }`}
         aria-hidden={!mobileMenuOpen}
       >
         <nav className="px-6 pb-6 pt-2 border-t border-border" aria-label="Mobile navigation">
@@ -139,14 +137,14 @@ export function Header() {
           </ul>
           <div className="mt-4 pt-4 border-t border-border space-y-3">
             <Link
-              href="tel:+97145551234"
+              href="tel:+971569556726"
               className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary/60 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
               tabIndex={mobileMenuOpen ? 0 : -1}
-              aria-label="Call us at +971 4 555 1234"
+              aria-label="Call us at +971 56 955 6726"
             >
               <Phone className="w-5 h-5 text-primary" aria-hidden="true" />
-              <span className="font-medium">+971 4 555 1234</span>
+              <span className="font-medium">+971 56 955 6726</span>
             </Link>
             <Button
               asChild

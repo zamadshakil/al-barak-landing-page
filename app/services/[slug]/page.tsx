@@ -4,11 +4,15 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import {
   Droplets,
-  Container,
-  Wind,
   Paintbrush,
-  Zap,
+  Hammer,
+  Layers,
+  Grid3X3,
   HardHat,
+  Wrench,
+  PaintBucket,
+  Pipette,
+  Shield,
   ArrowRight,
   ArrowLeft,
   Phone,
@@ -26,12 +30,16 @@ import {
 
 /* Map icon name → Lucide component */
 const iconMap: Record<string, LucideIcon> = {
-  Droplets,
-  Container,
-  Wind,
   Paintbrush,
-  Zap,
+  Hammer,
+  Layers,
+  Grid3X3,
   HardHat,
+  Wrench,
+  Droplets,
+  PaintBucket,
+  Pipette,
+  Shield,
 }
 
 /* ── Static params for all service slugs ─────────────────────────── */
@@ -54,7 +62,7 @@ export async function generateMetadata({
     description: service.heroDescription,
     alternates: { canonical: `/services/${slug}` },
     openGraph: {
-      title: `${service.title} | Al Barak Technical Services`,
+      title: `${service.title} | AL BARZAK Technical Services`,
       description: service.heroDescription,
       url: `/services/${slug}`,
     },
@@ -130,9 +138,8 @@ export default async function ServiceDetailPage({
 
             <div className="max-w-3xl">
               <div
-                className={`inline-flex w-16 h-16 rounded-2xl ${
-                  service.color === "primary" ? "bg-primary" : "bg-accent"
-                } items-center justify-center shadow-lg mb-6`}
+                className={`inline-flex w-16 h-16 rounded-2xl ${service.color === "primary" ? "bg-primary" : "bg-accent"
+                  } items-center justify-center shadow-lg mb-6`}
                 aria-hidden="true"
               >
                 <Icon className="w-8 h-8 text-primary-foreground" />
@@ -165,7 +172,7 @@ export default async function ServiceDetailPage({
                   variant="outline"
                   className="border-background/60 bg-transparent text-background hover:bg-background/20 hover:text-background h-14 px-8 font-medium"
                 >
-                  <Link href="tel:+97145551234" aria-label="Call +971 4 555 1234">
+                  <Link href="tel:+971569556726" aria-label="Call +971 56 955 6726">
                     <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
                     Call Now
                   </Link>
@@ -208,9 +215,8 @@ export default async function ServiceDetailPage({
                   className="bg-card rounded-2xl border border-border p-8 hover:shadow-lg transition-shadow duration-300"
                 >
                   <div
-                    className={`w-10 h-10 rounded-xl ${
-                      i % 2 === 0 ? "bg-primary/10 text-primary" : "bg-accent/10 text-accent"
-                    } flex items-center justify-center mb-5 font-bold text-lg`}
+                    className={`w-10 h-10 rounded-xl ${i % 2 === 0 ? "bg-primary/10 text-primary" : "bg-accent/10 text-accent"
+                      } flex items-center justify-center mb-5 font-bold text-lg`}
                     aria-hidden="true"
                   >
                     {i + 1}
@@ -313,9 +319,8 @@ export default async function ServiceDetailPage({
                     className="group flex items-start gap-5 p-6 bg-card rounded-2xl border border-border hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     <div
-                      className={`shrink-0 w-14 h-14 rounded-xl ${
-                        r.color === "primary" ? "bg-primary" : "bg-accent"
-                      } flex items-center justify-center`}
+                      className={`shrink-0 w-14 h-14 rounded-xl ${r.color === "primary" ? "bg-primary" : "bg-accent"
+                        } flex items-center justify-center`}
                       aria-hidden="true"
                     >
                       <RIcon className="w-7 h-7 text-primary-foreground" />

@@ -31,7 +31,7 @@ export function Footer() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/15 border border-primary-foreground/25 mb-8">
             <span className="w-2 h-2 rounded-full bg-primary-foreground animate-pulse" aria-hidden="true" />
             <span className="text-sm text-primary-foreground font-medium">
-              Have an Emergency? We are Here to Help!
+              Need Technical Services? We are Here to Help!
             </span>
           </div>
 
@@ -42,7 +42,7 @@ export function Footer() {
             Call Us Today for Fast, Professional Service
           </h2>
           <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Need help with gas leakage or a clogged drain? We offer affordable emergency services that are just a call away.
+            From painting and carpentry to plumbing and steel works — our licensed team delivers quality service across Dubai. Just a call away.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -51,9 +51,9 @@ export function Footer() {
               size="lg"
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/80 h-16 px-10 text-lg font-semibold group shadow-xl"
             >
-              <Link href="tel:+97145551234" aria-label="Call us at +971 4 555 1234">
+              <Link href="tel:+971569556726" aria-label="Call Amir at +971 56 955 6726">
                 <Phone className="w-5 h-5 mr-3" aria-hidden="true" />
-                +971 4 555 1234
+                +971 56 955 6726
                 <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </Link>
             </Button>
@@ -64,7 +64,7 @@ export function Footer() {
               className="border-primary-foreground/60 bg-transparent text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground h-16 px-10 text-lg font-medium"
             >
               <Link
-                href="https://wa.me/97145551234"
+                href="https://wa.me/971569556726"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Message us on WhatsApp"
@@ -83,42 +83,50 @@ export function Footer() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {/* Company Info */}
             <div className="lg:col-span-1">
-              <Link href="/" className="inline-flex items-center gap-3 mb-6 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-background/50" aria-label="Al Barak Technical Services — Home">
+              <Link href="/" className="inline-flex items-center gap-3 mb-6 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-background/50" aria-label="AL BARZAK Technical Services — Home">
                 <Image
                   src="/Logo.jpeg"
-                  alt="Al Barak Technical Services logo"
+                  alt="AL BARZAK Technical Services logo"
                   width={48}
                   height={48}
                   className="w-12 h-12 rounded-xl object-contain"
                 />
                 <div>
-                  <span className="text-background font-semibold text-xl tracking-tight">Al Barak</span>
+                  <span className="text-background font-semibold text-xl tracking-tight">AL BARZAK</span>
                   <span className="text-background/60 text-sm block leading-tight">Technical Services</span>
                 </div>
               </Link>
               <p className="text-background/70 leading-relaxed mb-6">
-                Your trusted partner for premium technical and maintenance services across the UAE since 2009. Quality, reliability, and customer satisfaction guaranteed!
+                Your trusted partner for professional contracting and technical services in Dubai, UAE. Quality workmanship, licensed professionals, and customer satisfaction guaranteed.
               </p>
               <address className="not-italic space-y-3">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" aria-hidden="true" />
-                  <span className="text-sm text-background/70">Business Bay, Dubai, UAE</span>
+                  <span className="text-sm text-background/70">First Floor, Office 101, AL ZAHRA TECHNO CENTER, Dubai, UAE</span>
                 </div>
                 <Link
-                  href="tel:+97145551234"
+                  href="tel:+971569556726"
                   className="flex items-center gap-3 hover:text-primary transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background/50"
-                  aria-label="Call +971 4 555 1234"
+                  aria-label="Call Amir at +971 56 955 6726"
                 >
                   <Phone className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
-                  <span className="text-sm text-background/70">+971 4 555 1234</span>
+                  <span className="text-sm text-background/70">+971 56 955 6726</span>
                 </Link>
                 <Link
-                  href="mailto:info@albarak.online"
+                  href="tel:+971508782516"
                   className="flex items-center gap-3 hover:text-primary transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background/50"
-                  aria-label="Email info@albarak.online"
+                  aria-label="Call Abuzar at +971 50 878 2516"
+                >
+                  <Phone className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
+                  <span className="text-sm text-background/70">+971 50 878 2516</span>
+                </Link>
+                <Link
+                  href="mailto:mahrabuzar143@gmail.com"
+                  className="flex items-center gap-3 hover:text-primary transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background/50"
+                  aria-label="Email mahrabuzar143@gmail.com"
                 >
                   <Mail className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
-                  <span className="text-sm text-background/70">info@albarak.online</span>
+                  <span className="text-sm text-background/70">mahrabuzar143@gmail.com</span>
                 </Link>
               </address>
             </div>
@@ -184,9 +192,14 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-background/10">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-background/60">
-              &copy; {new Date().getFullYear()} Al Barak Technical Services LLC. All rights reserved.
-            </p>
+            <div className="text-center sm:text-left">
+              <p className="text-sm text-background/60">
+                &copy; {new Date().getFullYear()} AL BARZAK TECHNICAL SERVICES L.L.C. All rights reserved.
+              </p>
+              <p className="text-xs text-background/40 mt-1">
+                Trade License No: 1592934
+              </p>
+            </div>
             <div className="flex items-center gap-6">
               <Link
                 href="/privacy-policy"

@@ -28,214 +28,43 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    slug: "plumbing-drain-cleaning",
-    title: "Plumbing & Drain Cleaning",
+    slug: "painting-contracting",
+    title: "Painting Contracting",
     shortDescription:
-      "Whether it is cleaning a clogged drain or replacing pipes, our team knows what is right and will offer you the best solution at affordable prices.",
+      "Professional interior and exterior painting services for residential, commercial, and industrial properties across the UAE.",
     heroDescription:
-      "From minor leak repairs to full pipe replacements, our licensed plumbers deliver fast, reliable solutions across residential and commercial properties in the UAE. We use modern equipment and techniques to ensure lasting results.",
-    image: "/images/service-plumbing.jpg",
-    icon: "Droplets",
-    color: "primary",
-    features: [
-      "Emergency Repairs",
-      "Drain Cleaning",
-      "Water Heater Services",
-      "Pipe Replacement",
-      "Leak Detection",
-      "Bathroom Renovation",
-    ],
-    details: [
-      {
-        heading: "24/7 Emergency Plumbing",
-        text: "Water emergencies do not wait for business hours. Our emergency plumbing team is available around the clock to handle burst pipes, severe leaks, and flooding situations. We guarantee a rapid response time across Dubai, Abu Dhabi, and Sharjah.",
-      },
-      {
-        heading: "Advanced Drain Cleaning",
-        text: "We use high-pressure hydro-jetting and CCTV camera inspection to locate and clear even the most stubborn blockages. Our preventive drain maintenance programmes keep your systems flowing smoothly year-round.",
-      },
-      {
-        heading: "Water Heater Installation & Repair",
-        text: "Whether you need a new water heater installed or your existing unit serviced, our technicians are trained on all major brands. We handle both tank and tankless systems for residential and commercial applications.",
-      },
-    ],
-    benefits: [
-      "Licensed and insured plumbers",
-      "Same-day service availability",
-      "Transparent pricing with no hidden fees",
-      "12-month warranty on all repairs",
-      "Eco-friendly solutions available",
-    ],
-    faqs: [
-      {
-        question: "How quickly can you respond to a plumbing emergency?",
-        answer:
-          "We aim to arrive within 60 minutes for emergency calls in Dubai. For other Emirates, response times are typically 1–2 hours depending on location.",
-      },
-      {
-        question: "Do you provide free estimates?",
-        answer:
-          "Yes, we provide free on-site estimates for all plumbing work. There are no call-out fees during regular business hours.",
-      },
-      {
-        question: "Are your plumbers licensed?",
-        answer:
-          "Absolutely. All our plumbers are Dubai Municipality approved and hold valid trade licenses for their specialisations.",
-      },
-    ],
-  },
-  {
-    slug: "heavy-crane-services",
-    title: "Heavy Crane Services",
-    shortDescription:
-      "We provide professional crane operations for construction, industrial lifting, and specialized heavy equipment positioning with top safety standards.",
-    heroDescription:
-      "Our crane division operates a fleet of mobile and tower cranes capable of handling lifts from 5 to 500 tonnes. Every operation is planned and executed by certified operators with a perfect safety record.",
-    image: "/images/service-crane.jpg",
-    icon: "Container",
-    color: "accent",
-    features: [
-      "Mobile Cranes",
-      "Tower Cranes",
-      "Safe Operations",
-      "Heavy Lifting",
-      "Industrial Transport",
-      "Equipment Positioning",
-    ],
-    details: [
-      {
-        heading: "Mobile Crane Hire",
-        text: "Our fleet of mobile cranes ranges from 25-tonne city cranes to 500-tonne all-terrain models. Each unit comes with a certified operator, rigging team, and comprehensive insurance coverage.",
-      },
-      {
-        heading: "Tower Crane Operations",
-        text: "For long-term construction projects, we provide tower crane installation, operation, and maintenance services. Our engineers handle everything from foundation design to dismantling.",
-      },
-      {
-        heading: "Lift Planning & Engineering",
-        text: "Every heavy lift begins with detailed engineering analysis. Our qualified lift planners calculate load weights, determine rigging configurations, and produce comprehensive method statements for every operation.",
-      },
-    ],
-    benefits: [
-      "Certified crane operators",
-      "Comprehensive insurance coverage",
-      "Detailed lift planning included",
-      "Fleet range: 25T to 500T",
-      "Perfect safety record",
-    ],
-    faqs: [
-      {
-        question: "What is the maximum lifting capacity?",
-        answer:
-          "Our largest mobile crane can handle up to 500 tonnes. For heavier lifts, we provide tandem lift solutions using multiple cranes.",
-      },
-      {
-        question: "Do you handle permits and approvals?",
-        answer:
-          "Yes, we assist with all necessary permits from Dubai Municipality, RTA road closure permits, and any other regulatory approvals required for the operation.",
-      },
-      {
-        question: "How far in advance should I book?",
-        answer:
-          "We recommend booking at least 1–2 weeks in advance for standard lifts. Emergency mobilisation is available within 24–48 hours subject to fleet availability.",
-      },
-    ],
-  },
-  {
-    slug: "hvac-ac-maintenance",
-    title: "HVAC & AC Maintenance",
-    shortDescription:
-      "Stay cool and comfortable! Our expert technicians handle AC installation, maintenance, duct cleaning, and emergency repairs around the clock.",
-    heroDescription:
-      "UAE temperatures demand reliable air conditioning. Our HVAC division provides complete climate control solutions — from routine maintenance that prevents breakdowns to emergency repairs that restore comfort fast.",
-    image: "/images/service-hvac.jpg",
-    icon: "Wind",
-    color: "primary",
-    features: [
-      "AC Installation",
-      "Duct Cleaning",
-      "24/7 Emergency",
-      "Preventive Maintenance",
-      "Chiller Services",
-      "Indoor Air Quality",
-    ],
-    details: [
-      {
-        heading: "Annual Maintenance Contracts",
-        text: "Our AMC plans include regular inspections, filter replacements, coil cleaning, and gas top-ups. Preventive maintenance extends the life of your AC systems by up to 40% and reduces energy consumption significantly.",
-      },
-      {
-        heading: "Duct Cleaning & Sanitisation",
-        text: "Over time, dust, mould, and allergens accumulate in ductwork. Our specialised cleaning equipment removes contaminants and improves indoor air quality, which is especially important in the dusty UAE climate.",
-      },
-      {
-        heading: "Emergency AC Repair",
-        text: "When your AC breaks down in the middle of summer, we understand the urgency. Our 24/7 emergency team carries common replacement parts and can resolve most issues in a single visit.",
-      },
-    ],
-    benefits: [
-      "All major brands serviced",
-      "Energy efficiency improvements",
-      "DEWA-compliant installations",
-      "Parts availability for fast repairs",
-      "AMC plans from AED 500/year",
-    ],
-    faqs: [
-      {
-        question: "How often should AC maintenance be performed?",
-        answer:
-          "We recommend servicing your AC units at least twice a year — once before summer and once before winter. Monthly filter cleaning is also advisable in the UAE climate.",
-      },
-      {
-        question: "Can you service centralised AC systems?",
-        answer:
-          "Yes, we service all types including split units, centralised systems, VRF/VRV systems, and chiller-based cooling for commercial buildings.",
-      },
-      {
-        question: "Do you offer annual maintenance contracts?",
-        answer:
-          "Yes, our AMC plans cover regular servicing, priority emergency response, and discounted repair rates. Plans start from AED 500 per year for residential units.",
-      },
-    ],
-  },
-  {
-    slug: "painting-decor",
-    title: "Painting & Decor",
-    shortDescription:
-      "Transform your space with our professional painting services. We offer interior and exterior painting with expert color consultation.",
-    heroDescription:
-      "A fresh coat of paint transforms any space. Our painting and decoration team handles everything from villa repaints to large commercial projects, delivering flawless finishes with premium materials and meticulous preparation.",
-    image: "/images/service-painting.jpg",
+      "Transform your space with our expert painting contracting services. From villa repaints to large-scale commercial projects, we deliver flawless finishes using premium paints and meticulous surface preparation techniques.",
+    image: "/images/service-painting-contracting.jpg",
     icon: "Paintbrush",
-    color: "accent",
+    color: "primary",
     features: [
       "Interior Painting",
       "Exterior Coating",
-      "Wallpaper Installation",
-      "Colour Consultation",
       "Texture Finishes",
       "Waterproofing Paint",
+      "Colour Consultation",
+      "Surface Preparation",
     ],
     details: [
       {
-        heading: "Interior Painting",
-        text: "From single rooms to entire buildings, our painters deliver clean, even finishes with minimal disruption. We prepare all surfaces properly — filling cracks, sanding, and priming — to ensure the paint lasts for years.",
+        heading: "Interior & Exterior Painting",
+        text: "From single rooms to entire building facades, our painters deliver clean, even finishes with minimal disruption. We prepare all surfaces thoroughly — filling cracks, sanding, and priming — to ensure paint adhesion and longevity.",
       },
       {
-        heading: "Exterior Coating & Protection",
-        text: "UAE sun, sand, and humidity demand specialised exterior coatings. We use weather-resistant paints and waterproof finishes that protect your building and maintain their appearance in harsh conditions.",
+        heading: "Commercial & Industrial Painting",
+        text: "We handle large-scale painting projects for offices, warehouses, retail spaces, and industrial facilities. Our team works around your schedule to minimise business disruption while delivering exceptional results.",
       },
       {
-        heading: "Wallpaper & Decorative Finishes",
-        text: "We install all types of wallpaper including vinyl, fabric, and custom-printed designs. Our team also creates bespoke decorative finishes like Venetian plaster, metallic effects, and textured walls.",
+        heading: "Speciality Finishes",
+        text: "We offer decorative finishes including Venetian plaster, metallic effects, textured walls, and anti-graffiti coatings. Our skilled painters create bespoke finishes that elevate any environment.",
       },
     ],
     benefits: [
-      "Premium paints from trusted brands",
-      "Thorough surface preparation",
+      "Premium paints from trusted brands (Jotun, Dulux, National)",
+      "Thorough surface preparation for lasting results",
       "Colour consultation included",
-      "Clean, tidy work practices",
-      "Satisfaction guarantee",
+      "Clean, professional work practices",
+      "Satisfaction guarantee on all projects",
     ],
     faqs: [
       {
@@ -256,116 +85,515 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "electrical-services",
-    title: "Electrical Services",
+    slug: "carpentry-wood-flooring",
+    title: "Carpentry & Wood Flooring Works",
     shortDescription:
-      "Our licensed electricians provide safe and reliable electrical solutions, from simple repairs to complete wiring and smart home systems.",
+      "Expert carpentry and premium wood flooring installation, repair, and restoration services for homes and businesses in Dubai.",
     heroDescription:
-      "Electrical work demands precision and safety. Our DEWA-certified electricians handle everything from socket repairs to full building rewiring, smart home automation, and energy-efficient lighting upgrades across the UAE.",
-    image: "/images/service-electrical.jpg",
-    icon: "Zap",
-    color: "primary",
+      "From custom joinery and built-in furniture to hardwood floor installation and restoration, our skilled carpenters deliver precision craftsmanship that adds warmth and value to your property.",
+    image: "/images/service-carpentry-wood-flooring.jpg",
+    icon: "Hammer",
+    color: "accent",
     features: [
-      "Electrical Repairs",
-      "Panel Upgrades",
-      "Smart Systems",
-      "Lighting Design",
-      "Safety Inspections",
-      "EV Charger Installation",
+      "Custom Joinery",
+      "Wood Floor Installation",
+      "Floor Sanding & Polishing",
+      "Built-in Furniture",
+      "Door & Window Fitting",
+      "Partition Work",
     ],
     details: [
       {
-        heading: "Residential Electrical Services",
-        text: "From replacing a faulty socket to rewiring an entire villa, our residential electricians handle it all. We perform thorough diagnostics before any work begins and ensure all installations meet DEWA standards.",
+        heading: "Custom Carpentry & Joinery",
+        text: "Our carpenters create bespoke wardrobes, kitchen cabinets, shelving units, and furniture pieces tailored to your exact specifications. We work with a variety of woods and finishes to match your interior design.",
       },
       {
-        heading: "Commercial & Industrial",
-        text: "Our commercial division handles office fit-outs, warehouse installations, and industrial panel work. We work with project managers and contractors to deliver on schedule and within budget.",
+        heading: "Wood Flooring Installation",
+        text: "We install all types of wood flooring including solid hardwood, engineered wood, parquet, and laminate. Our team ensures precise levelling, proper acclimatisation, and seamless installation for a beautiful, lasting floor.",
       },
       {
-        heading: "Smart Home Automation",
-        text: "We design and install smart home systems including automated lighting, motorised blinds, smart thermostats, and integrated security systems. Compatible with major platforms like Control4, KNX, and Lutron.",
+        heading: "Floor Restoration & Refinishing",
+        text: "Breathe new life into worn wooden floors with our professional sanding, staining, and sealing services. We restore damaged or aged floors to their original beauty while protecting them against future wear.",
       },
     ],
     benefits: [
-      "DEWA-certified electricians",
-      "Compliance certificates provided",
-      "Emergency callout available",
-      "Smart home integration",
-      "Energy audit services",
+      "Skilled craftsmen with years of experience",
+      "High-quality materials and hardware",
+      "Custom designs to your specifications",
+      "Clean installation with minimal disruption",
+      "After-service support and warranty",
     ],
     faqs: [
       {
-        question: "Are your electricians DEWA certified?",
+        question: "What types of wood flooring do you install?",
         answer:
-          "Yes, all our electricians hold valid DEWA certification and Dubai Municipality trade licences. We provide compliance certificates for all installations.",
+          "We install solid hardwood, engineered wood, parquet, laminate, and vinyl plank flooring. We can advise on the best option based on your usage, budget, and climate considerations.",
       },
       {
-        question: "Can you install EV chargers?",
+        question: "Can you build custom furniture?",
         answer:
-          "Yes, we install home and commercial EV charging stations from brands like ABB, Wallbox, and Tesla. We handle the DEWA application process as well.",
+          "Yes, our carpenters specialise in bespoke furniture including wardrobes, kitchen cabinets, TV units, bookshelves, and office desks — all made to measure.",
       },
       {
-        question: "Do you provide electrical safety inspections?",
+        question: "How long does wood floor installation take?",
         answer:
-          "Yes, we offer comprehensive electrical safety audits for homes and businesses. Our reports identify potential hazards and recommend corrective actions.",
+          "A standard apartment typically takes 3–5 days for installation, including subfloor preparation. Larger villas may take 7–10 days depending on the scope.",
       },
     ],
   },
   {
-    slug: "general-construction",
-    title: "General Construction",
+    slug: "glass-aluminum",
+    title: "Glass & Aluminum Installation & Maintenance",
     shortDescription:
-      "From renovations to fit-outs, our construction team delivers quality workmanship with attention to detail and project management expertise.",
+      "Professional glass and aluminium installation, replacement, and maintenance for windows, doors, facades, and partitions across Dubai.",
     heroDescription:
-      "Whether you are renovating a bathroom, fitting out an office, or building an extension, our construction team delivers quality workmanship on time and on budget. We manage every phase from design to handover.",
-    image: "/images/service-construction.jpg",
-    icon: "HardHat",
-    color: "accent",
+      "We specialise in the installation and maintenance of glass and aluminium systems including curtain walls, storefronts, shower enclosures, office partitions, and window replacements — built to withstand the UAE climate.",
+    image: "/images/service-glass-aluminum.jpg",
+    icon: "Layers",
+    color: "primary",
     features: [
-      "Renovations",
-      "Fit-outs",
-      "Project Management",
-      "Floor & Tile Work",
-      "Carpentry",
-      "Waterproofing",
+      "Window Installation",
+      "Aluminium Doors",
+      "Glass Partitions",
+      "Curtain Walls",
+      "Shower Enclosures",
+      "Facade Maintenance",
     ],
     details: [
       {
-        heading: "Villa & Apartment Renovation",
-        text: "We transform dated properties into modern living spaces. Our renovation services include kitchen and bathroom remodelling, flooring replacement, partition work, and complete interior redesigns.",
+        heading: "Window & Door Systems",
+        text: "We install and replace aluminium windows and doors with energy-efficient, double-glazed units. Our systems offer superior thermal and acoustic insulation, perfect for the UAE environment.",
       },
       {
-        heading: "Commercial Fit-outs",
-        text: "From retail shops to corporate offices, we deliver turnkey fit-out solutions. Our team coordinates with architects and designers to bring your vision to life, handling MEP, joinery, and finishing.",
+        heading: "Glass Partitions & Enclosures",
+        text: "Create modern, open-plan spaces with frameless glass partitions, shower enclosures, and balustrades. We supply tempered and laminated safety glass to meet all building code requirements.",
       },
       {
-        heading: "Project Management",
-        text: "Every project gets a dedicated project manager who oversees timelines, budgets, and quality. We provide regular progress reports and maintain transparent communication throughout the project lifecycle.",
+        heading: "Facade & Curtain Wall Maintenance",
+        text: "Our maintenance team handles re-sealing, glass replacement, and structural repairs for building facades and curtain wall systems. We keep your building looking pristine and watertight.",
       },
     ],
     benefits: [
-      "End-to-end project management",
-      "Transparent cost breakdowns",
-      "Dubai Municipality approved",
-      "Quality materials sourced locally",
-      "Post-handover support",
+      "Energy-efficient glazing solutions",
+      "Safety-rated tempered and laminated glass",
+      "Professional sealant application",
+      "Compliance with UAE building codes",
+      "Expert facade maintenance services",
     ],
     faqs: [
       {
-        question: "Do you handle municipality approvals?",
+        question: "Can you replace individual glass panels in a facade?",
         answer:
-          "Yes, we assist with all Dubai Municipality and relevant authority permits required for renovation and construction projects.",
+          "Yes, we replace individual broken or damaged panels in curtain walls and facades. We match the existing glass specification for a seamless result.",
       },
       {
-        question: "Can you work while we occupy the space?",
+        question: "Do you install frameless shower enclosures?",
         answer:
-          "Yes, we regularly complete phased renovations in occupied homes and businesses. We plan the work to minimise disruption to your daily routine.",
+          "Absolutely. We install frameless, semi-frameless, and framed shower enclosures using tempered safety glass in various thicknesses and finishes.",
       },
       {
-        question: "What warranty do you provide?",
+        question: "What types of aluminium systems do you work with?",
         answer:
-          "We provide a 12-month defects liability period on all construction work. Structural elements carry extended warranties as per UAE building codes.",
+          "We work with all major aluminium profile systems including Technal, Schüco, Alumil, and local UAE brands. We can match existing profiles for renovation work.",
+      },
+    ],
+  },
+  {
+    slug: "floor-wall-tiling",
+    title: "Floor & Wall Tiling Works",
+    shortDescription:
+      "Expert floor and wall tiling installation and repair for kitchens, bathrooms, living areas, and commercial spaces throughout Dubai.",
+    heroDescription:
+      "Our skilled tilers deliver precision tile installation for every space — from porcelain and ceramic to natural stone and mosaic. We handle full bathroom and kitchen tiling, floor-to-ceiling installations, and intricate pattern work.",
+    image: "/images/service-floor-wall-tiling.jpg",
+    icon: "Grid3X3",
+    color: "accent",
+    features: [
+      "Porcelain Tiles",
+      "Natural Stone",
+      "Mosaic Work",
+      "Bathroom Tiling",
+      "Kitchen Backsplash",
+      "Waterproof Membrane",
+    ],
+    details: [
+      {
+        heading: "Residential Tiling",
+        text: "We transform bathrooms, kitchens, and living areas with precision tile installation. Our team handles surface preparation, waterproof membranes, and grouting to deliver beautiful, durable tiled surfaces.",
+      },
+      {
+        heading: "Commercial Tiling",
+        text: "From hotel lobbies to office flooring, we handle large-scale commercial tiling projects with speed and precision. We work with architects and designers to achieve the exact look specified.",
+      },
+      {
+        heading: "Tile Repair & Replacement",
+        text: "We repair cracked, chipped, or loose tiles and regrout worn joints. Our tile-matching service ensures seamless repairs that blend with existing installations.",
+      },
+    ],
+    benefits: [
+      "Precision cutting and laying",
+      "Proper waterproofing under wet-area tiles",
+      "Wide range of tile types and sizes",
+      "Clean, grout-consistent finishes",
+      "Repair service for existing tiled surfaces",
+    ],
+    faqs: [
+      {
+        question: "What tile sizes can you work with?",
+        answer:
+          "We work with all sizes from small mosaics to large-format tiles (120×60 cm and above). Our team has the equipment and experience for precision installation of any size.",
+      },
+      {
+        question: "Do you provide waterproofing before tiling?",
+        answer:
+          "Yes, we always apply proper waterproof membranes in wet areas like bathrooms, kitchens, and balconies before tiling. This is essential for preventing water damage.",
+      },
+      {
+        question: "Can you tile over existing tiles?",
+        answer:
+          "In some cases yes, provided the existing tiles are firmly bonded and the surface is properly prepared. We will assess and advise on the best approach during our site visit.",
+      },
+    ],
+  },
+  {
+    slug: "metal-parts-erections",
+    title: "Metal Parts & Erections Contracting",
+    shortDescription:
+      "Structural steel fabrication, metal parts supply, and erection services for construction and industrial projects in the UAE.",
+    heroDescription:
+      "We provide complete metal parts contracting — from fabrication and supply to on-site erection of structural steel, metal frameworks, railings, and industrial components with full safety compliance.",
+    image: "/images/service-metal-parts-erections.jpg",
+    icon: "HardHat",
+    color: "primary",
+    features: [
+      "Structural Steelwork",
+      "Metal Fabrication",
+      "Railing & Handrails",
+      "Steel Erection",
+      "Welding Services",
+      "Industrial Metalwork",
+    ],
+    details: [
+      {
+        heading: "Structural Steel Erection",
+        text: "Our certified erection teams handle steel frame assembly for buildings, warehouses, and industrial structures. We follow strict safety protocols and quality standards to deliver reliable structural work.",
+      },
+      {
+        heading: "Metal Fabrication & Supply",
+        text: "We fabricate custom metal components including gates, railings, staircases, canopies, and industrial parts. Our workshop produces precision metalwork using mild steel, stainless steel, and aluminium.",
+      },
+      {
+        heading: "On-Site Welding & Repairs",
+        text: "Our qualified welders perform on-site structural welding, equipment repairs, and metal modifications. We carry portable welding equipment and work across all emirates.",
+      },
+    ],
+    benefits: [
+      "Certified welders and erection teams",
+      "In-house fabrication workshop",
+      "Full compliance with safety standards",
+      "Both ferrous and non-ferrous metals",
+      "On-site and off-site capabilities",
+    ],
+    faqs: [
+      {
+        question: "What types of metal do you work with?",
+        answer:
+          "We work with mild steel, galvanised steel, stainless steel (304 and 316 grades), and aluminium. We can source and fabricate in any metal required for your project.",
+      },
+      {
+        question: "Do you handle structural steel for buildings?",
+        answer:
+          "Yes, we provide complete structural steel services including design support, fabrication, delivery, and erection for commercial and industrial buildings.",
+      },
+      {
+        question: "Are your welders certified?",
+        answer:
+          "Yes, all our welders hold valid certifications and are trained in multiple welding processes including MIG, TIG, and stick welding.",
+      },
+    ],
+  },
+  {
+    slug: "steel-products",
+    title: "Steel Products Installation & Maintenance",
+    shortDescription:
+      "Expert installation and maintenance of steel products including doors, gates, frames, handrails, and security grilles across Dubai.",
+    heroDescription:
+      "We install and maintain a wide range of steel products — from security doors and gates to handrails, bollards, and steel shelving. Our team ensures durable installations with proper anti-corrosion treatment for the UAE climate.",
+    image: "/images/service-steel-products.jpg",
+    icon: "Wrench",
+    color: "accent",
+    features: [
+      "Steel Door Installation",
+      "Security Gates",
+      "Handrails & Balustrades",
+      "Bollard Installation",
+      "Anti-corrosion Treatment",
+      "Maintenance & Repair",
+    ],
+    details: [
+      {
+        heading: "Steel Door & Gate Installation",
+        text: "We install fire-rated steel doors, security gates, roller shutters, and industrial doors for commercial, residential, and industrial applications. All installations meet UAE fire safety and security standards.",
+      },
+      {
+        heading: "Handrails, Balustrades & Safety Barriers",
+        text: "Our team installs stainless steel and mild steel handrails, balustrades, and safety barriers for staircases, balconies, ramps, and parking structures. All work meets accessibility and safety regulations.",
+      },
+      {
+        heading: "Steel Product Maintenance",
+        text: "Protect your steel installations from the harsh UAE climate with our maintenance services. We provide anti-rust treatment, repainting, hinge and lock repairs, and structural inspections.",
+      },
+    ],
+    benefits: [
+      "Fire-rated and security-compliant installations",
+      "Anti-corrosion and weather protection",
+      "Wide product range from gates to shelving",
+      "Both supply and installation services",
+      "Preventive maintenance programmes",
+    ],
+    faqs: [
+      {
+        question: "Do you supply and install fire-rated doors?",
+        answer:
+          "Yes, we supply and install fire-rated steel doors that meet UAE Civil Defence requirements. We provide all necessary certificates and documentation.",
+      },
+      {
+        question: "Can you repair or refurbish existing steel products?",
+        answer:
+          "Absolutely. We repair, repaint, and refurbish steel doors, gates, railings, and other products. We can often restore steel items to like-new condition at a fraction of replacement cost.",
+      },
+      {
+        question: "What anti-corrosion treatments do you offer?",
+        answer:
+          "We offer hot-dip galvanising, powder coating, anti-rust primer application, and marine-grade coatings — chosen based on the product and its exposure level.",
+      },
+    ],
+  },
+  {
+    slug: "plumbing-sanitary",
+    title: "Plumbing & Sanitary Installation",
+    shortDescription:
+      "Complete plumbing and sanitary installation services for new builds, renovations, and maintenance across Dubai and the UAE.",
+    heroDescription:
+      "From new plumbing installations to bathroom fit-outs and water heater setups, our licensed plumbers deliver reliable, code-compliant work for residential and commercial properties throughout the UAE.",
+    image: "/images/service-plumbing-sanitary.jpg",
+    icon: "Droplets",
+    color: "primary",
+    features: [
+      "New Installations",
+      "Bathroom Fit-outs",
+      "Water Heaters",
+      "Drainage Systems",
+      "Fixture Installation",
+      "Emergency Repairs",
+    ],
+    details: [
+      {
+        heading: "New Plumbing Installations",
+        text: "We handle complete plumbing systems for new construction and major renovations — including water supply lines, drainage, waste systems, and fixture connections. All work is done to Dubai Municipality standards.",
+      },
+      {
+        heading: "Bathroom & Kitchen Fit-outs",
+        text: "Our plumbers install complete bathroom and kitchen plumbing including sinks, toilets, showers, bathtubs, dishwashers, and water filtration systems. We coordinate with tilers and other trades for seamless fit-outs.",
+      },
+      {
+        heading: "Water Heater Installation",
+        text: "We install and service all types of water heaters including tank, tankless, and solar systems. Our team handles both residential and commercial installations with full safety compliance.",
+      },
+    ],
+    benefits: [
+      "Licensed and insured plumbers",
+      "Same-day service availability",
+      "Transparent pricing with no hidden fees",
+      "12-month warranty on all work",
+      "Emergency response available",
+    ],
+    faqs: [
+      {
+        question: "Do you handle complete bathroom plumbing?",
+        answer:
+          "Yes, we provide full bathroom plumbing services from rough-in to finishing — including all fixtures, drainage, water supply, and water heater connections.",
+      },
+      {
+        question: "Are your plumbers licensed?",
+        answer:
+          "Absolutely. All our plumbers hold valid trade licenses and meet Dubai Municipality requirements for plumbing work.",
+      },
+      {
+        question: "Do you provide free estimates?",
+        answer:
+          "Yes, we provide free on-site estimates for all plumbing work. There are no call-out fees during regular business hours.",
+      },
+    ],
+  },
+  {
+    slug: "plaster-works",
+    title: "Plaster Works",
+    shortDescription:
+      "Professional plastering services including gypsum work, wall rendering, decorative mouldings, and false ceiling installation.",
+    heroDescription:
+      "Our plastering team delivers smooth, perfectly finished walls and ceilings for new builds and renovations. We specialise in gypsum plastering, wall rendering, decorative cornices, and false ceiling installations across Dubai.",
+    image: "/images/service-plaster-works.jpg",
+    icon: "PaintBucket",
+    color: "accent",
+    features: [
+      "Gypsum Plastering",
+      "Wall Rendering",
+      "False Ceilings",
+      "Decorative Mouldings",
+      "Skim Coating",
+      "Plaster Repairs",
+    ],
+    details: [
+      {
+        heading: "Gypsum Plastering & Rendering",
+        text: "We apply machine and hand-applied gypsum plaster to walls and ceilings, creating perfectly smooth surfaces ready for painting. Our rendering services cover both interior and exterior walls with weather-resistant finishes.",
+      },
+      {
+        heading: "False Ceilings & Partitions",
+        text: "We install gypsum board false ceilings in various designs — flat, curved, multi-level, and with integrated lighting channels. We also build gypsum board partitions for office and residential space division.",
+      },
+      {
+        heading: "Decorative Mouldings & Cornices",
+        text: "Add elegance to any room with our decorative gypsum cornices, ceiling roses, and wall mouldings. We offer standard profiles and custom designs to complement your interior style.",
+      },
+    ],
+    benefits: [
+      "Smooth, paint-ready finishes",
+      "Machine-applied plaster for consistency",
+      "Creative false ceiling designs",
+      "Custom decorative mouldings",
+      "Fast turnaround times",
+    ],
+    faqs: [
+      {
+        question: "What is the difference between gypsum and cement plaster?",
+        answer:
+          "Gypsum plaster provides a smoother finish and is ideal for interior walls and ceilings. Cement plaster is more durable and moisture-resistant, making it suitable for exterior walls and wet areas.",
+      },
+      {
+        question: "Can you install multi-level false ceilings?",
+        answer:
+          "Yes, we design and install multi-level gypsum board ceilings with integrated lighting channels, curves, and decorative elements to your specifications.",
+      },
+      {
+        question: "How long does plastering take for a typical apartment?",
+        answer:
+          "A standard 2-bedroom apartment typically takes 5–7 days for complete plastering, including drying time. This may vary based on the condition of existing surfaces.",
+      },
+    ],
+  },
+  {
+    slug: "sanitary-pipes-repairing",
+    title: "Sanitary Installation & Pipes Repairing",
+    shortDescription:
+      "Specialised sanitary pipe repair, replacement, and maintenance services including leak detection, drain cleaning, and pipe relining.",
+    heroDescription:
+      "When pipes leak, drains clog, or sanitary systems fail, our expert team responds fast. We provide comprehensive pipe repair, replacement, drain cleaning, and leak detection services for homes and businesses across Dubai.",
+    image: "/images/service-sanitary-pipes-repairing.jpg",
+    icon: "Pipette",
+    color: "primary",
+    features: [
+      "Leak Detection",
+      "Pipe Repair",
+      "Drain Cleaning",
+      "Pipe Replacement",
+      "Hydro-jetting",
+      "CCTV Inspection",
+    ],
+    details: [
+      {
+        heading: "Leak Detection & Pipe Repair",
+        text: "We use advanced leak detection equipment to locate hidden leaks without unnecessary demolition. Our repair methods include pipe welding, clamping, epoxy lining, and sectional replacement to restore your system quickly.",
+      },
+      {
+        heading: "Drain Cleaning & Unblocking",
+        text: "We clear blocked drains, toilets, and sewer lines using high-pressure hydro-jetting and mechanical snaking. Our CCTV camera inspection identifies the cause and location of blockages for targeted solutions.",
+      },
+      {
+        heading: "Pipe Replacement & Relining",
+        text: "When repair is not enough, we provide full pipe replacement using modern CPVC, PPR, and PVC materials. For minimal disruption, we also offer trenchless pipe relining technology.",
+      },
+    ],
+    benefits: [
+      "Non-invasive leak detection technology",
+      "24/7 emergency response available",
+      "CCTV pipe inspection capability",
+      "Modern pipe materials and methods",
+      "Preventive maintenance programmes",
+    ],
+    faqs: [
+      {
+        question: "How do you detect hidden leaks?",
+        answer:
+          "We use thermal imaging, acoustic detection, and moisture meters to locate leaks behind walls, under floors, and in concealed pipe runs — all without breaking walls unless absolutely necessary.",
+      },
+      {
+        question: "Can you clear tree root blockages?",
+        answer:
+          "Yes, we use high-pressure hydro-jetting and root-cutting equipment to clear tree root intrusions from drainage pipes. We also advise on long-term solutions to prevent recurrence.",
+      },
+      {
+        question: "Do you provide emergency pipe repair?",
+        answer:
+          "Yes, we offer emergency pipe repair services. Call us and our team will respond as quickly as possible to prevent water damage to your property.",
+      },
+    ],
+  },
+  {
+    slug: "insulation-contracting",
+    title: "Insulation Contracting",
+    shortDescription:
+      "Thermal, acoustic, and waterproof insulation solutions for buildings, pipelines, ductwork, and industrial facilities in Dubai.",
+    heroDescription:
+      "Beat the UAE heat and reduce energy costs with our professional insulation services. We provide thermal, acoustic, and waterproof insulation for roofs, walls, pipes, HVAC ducts, and industrial equipment across Dubai.",
+    image: "/images/service-insulation-contracting.jpg",
+    icon: "Shield",
+    color: "accent",
+    features: [
+      "Thermal Insulation",
+      "Roof Waterproofing",
+      "Acoustic Insulation",
+      "Pipe Insulation",
+      "Duct Insulation",
+      "Cool Roof Systems",
+    ],
+    details: [
+      {
+        heading: "Thermal & Roof Insulation",
+        text: "We install high-performance thermal insulation for roofs, walls, and floors using materials like polyurethane foam, rock wool, and XPS boards. Proper insulation can reduce AC energy costs by up to 40% in the UAE climate.",
+      },
+      {
+        heading: "Waterproofing Solutions",
+        text: "Protect your building from water ingress with our waterproofing solutions for roofs, basements, bathrooms, and terraces. We use membrane systems, liquid coatings, and crystalline treatments for lasting protection.",
+      },
+      {
+        heading: "Pipe & Duct Insulation",
+        text: "We insulate chilled and hot water pipes, HVAC ductwork, and industrial pipelines to prevent condensation, energy loss, and noise transmission. Our materials meet UAE Estidama and green building requirements.",
+      },
+    ],
+    benefits: [
+      "Significant energy cost savings",
+      "Protection against water damage",
+      "Improved indoor comfort and acoustics",
+      "Green building compliant materials",
+      "Long-term performance warranties",
+    ],
+    faqs: [
+      {
+        question: "How much can insulation save on energy bills?",
+        answer:
+          "Proper roof and wall insulation in the UAE can reduce cooling costs by 25–40%. The investment typically pays for itself within 2–3 years through energy savings.",
+      },
+      {
+        question: "What waterproofing systems do you use?",
+        answer:
+          "We use APP and SBS modified bitumen membranes, polyurethane liquid coatings, cementitious crystalline systems, and EPDM rubber membranes — selected based on the application and exposure conditions.",
+      },
+      {
+        question: "Can you insulate existing buildings?",
+        answer:
+          "Yes, we retrofit insulation in existing buildings. Options include external wall insulation, roof overlays, spray foam application, and pipe/duct wrapping — all achievable without major structural changes.",
       },
     ],
   },
