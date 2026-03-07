@@ -1,27 +1,29 @@
 import { config, fields, collection } from "@keystatic/core";
 
 /**
- * Use GitHub storage only when ALL OAuth credentials are present.
- * This way `next build` works locally (falls back to local mode)
- * and only switches to GitHub mode on the deployed server where
- * the env vars are set.
+ * Detect whether to use GitHub storage.
+ *
+ * keystatic.config.ts is imported by both server AND client code (the
+ * "use client" KeystaticPage component). Server-only env vars like
+ * KEYSTATIC_GITHUB_CLIENT_ID are undefined in the browser bundle, so
+ * we cannot rely on them here.
+ *
+ * Instead we use NEXT_PUBLIC_VERCEL_ENV (auto-injected by Vercel on
+ * every deployment) to detect the production environment. Locally,
+ * this variable is absent so we fall back to local storage for dev.
  */
-const useGitHub = !!(
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
-  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET &&
-  process.env.KEYSTATIC_SECRET
-);
+const isVercelDeployment = !!process.env.NEXT_PUBLIC_VERCEL_ENV;
 
-const storage = useGitHub
+const storage = isVercelDeployment
   ? {
-      kind: "github" as const,
-      repo: {
-        owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "zamadshakil",
-        name:
-          process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO ??
-          "al-barak-landing-page",
-      },
-    }
+    kind: "github" as const,
+    repo: {
+      owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "zamadshakil",
+      name:
+        process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO ??
+        "al-barak-landing-page",
+    },
+  }
   : { kind: "local" as const };
 
 export default config({
