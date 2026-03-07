@@ -1,90 +1,182 @@
-import { makeRouteHandler } from "@keystatic/next/route-handler";
 import keystaticConfig from "@/keystatic.config";
 import { NextRequest, NextResponse } from "next/server";
 
-// Prevent Next.js from trying to statically collect this route at build time
 export const dynamic = "force-dynamic";
 
 const clientId = process.env.KEYSTATIC_GITHUB_CLIENT_ID!;
 const clientSecret = process.env.KEYSTATIC_GITHUB_CLIENT_SECRET!;
 const secret = process.env.KEYSTATIC_SECRET!;
 
-// Log at module init
-console.log("[keystatic-route] clientId:", clientId?.slice(0, 6) + "...");
-console.log("[keystatic-route] clientSecret length:", clientSecret?.length);
-console.log("[keystatic-route] secret length:", secret?.length);
+/* ------------------------------------------------------------------ */
+/*  Custom OAuth handler that supports BOTH expiring and non-expiring  */
+/*  GitHub tokens. Keystatic's built-in makeRouteHandler only supports */
+/*  expiring tokens — this handler works either way.                   */
+/* ------------------------------------------------------------------ */
 
-/**
- * Custom OAuth callback that logs GitHub's actual response
- * before delegating to Keystatic's handler.
- * This is TEMPORARY for debugging.
- */
-async function debugOAuthCallback(req: NextRequest): Promise<NextResponse | null> {
-  const url = new URL(req.url);
-  const pathSegments = url.pathname.replace(/^\/api\/keystatic\/?/, "").split("/");
-  const joined = pathSegments.join("/");
+// ── Cookie helper (no external dependency) ───────────────────────────
+function serializeCookie(
+  name: string,
+  value: string,
+  opts: { maxAge?: number; secure?: boolean; path?: string; httpOnly?: boolean; sameSite?: string }
+) {
+  let str = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+  if (opts.maxAge !== undefined) str += `; Max-Age=${opts.maxAge}`;
+  if (opts.secure) str += "; Secure";
+  if (opts.httpOnly) str += "; HttpOnly";
+  if (opts.path) str += `; Path=${opts.path}`;
+  if (opts.sameSite) str += `; SameSite=${opts.sameSite}`;
+  return str;
+}
 
-  // Only intercept the callback route for debugging
-  if (joined !== "github/oauth/callback") {
-    return null; // Let Keystatic handle it
-  }
+function parseCookies(header: string | null): Record<string, string> {
+  if (!header) return {};
+  const result: Record<string, string> = {};
+  header.split(";").forEach((part) => {
+    const [key, ...rest] = part.trim().split("=");
+    if (key) result[decodeURIComponent(key)] = decodeURIComponent(rest.join("="));
+  });
+  return result;
+}
 
-  const code = url.searchParams.get("code");
-  const error = url.searchParams.get("error");
-  const errorDescription = url.searchParams.get("error_description");
+const isProd = process.env.NODE_ENV === "production";
 
-  console.log("[oauth-debug] Callback received");
-  console.log("[oauth-debug] code:", code?.slice(0, 6) + "...");
-  console.log("[oauth-debug] error:", error);
-  console.log("[oauth-debug] errorDescription:", errorDescription);
+// ── Token Exchange ───────────────────────────────────────────────────
+async function exchangeCodeForToken(code: string) {
+  const url = new URL("https://github.com/login/oauth/access_token");
+  url.searchParams.set("client_id", clientId);
+  url.searchParams.set("client_secret", clientSecret);
+  url.searchParams.set("code", code);
 
-  // Replicate the exact token exchange that Keystatic does
-  const tokenUrl = new URL("https://github.com/login/oauth/access_token");
-  tokenUrl.searchParams.set("client_id", clientId);
-  tokenUrl.searchParams.set("client_secret", clientSecret);
-  tokenUrl.searchParams.set("code", code || "");
-
-  console.log("[oauth-debug] Exchanging code at:", tokenUrl.origin + tokenUrl.pathname);
-  console.log("[oauth-debug] client_id sent:", tokenUrl.searchParams.get("client_id"));
-
-  const tokenRes = await fetch(tokenUrl, {
+  const res = await fetch(url, {
     method: "POST",
     headers: { Accept: "application/json" },
   });
 
-  const responseText = await tokenRes.text();
-  console.log("[oauth-debug] GitHub response status:", tokenRes.status);
-  console.log("[oauth-debug] GitHub response body:", responseText);
+  if (!res.ok) return null;
+  return res.json();
+}
 
-  // Don't actually handle it — just log and return null so we fall through
-  // Actually, we consumed the response, so let's return the error info
-  // for diagnostic purposes
-  return NextResponse.json(
-    {
-      debug: true,
-      githubStatus: tokenRes.status,
-      githubResponse: JSON.parse(responseText),
-      note: "This is temporary debug output. Remove after fixing OAuth.",
-    },
-    { status: 200 }
+// ── Cookie builders ──────────────────────────────────────────────────
+function makeTokenCookies(accessToken: string, expiresIn?: number): string[] {
+  // 1 year fallback for non-expiring tokens
+  const maxAge = expiresIn ?? 60 * 60 * 24 * 365;
+  return [
+    serializeCookie("keystatic-gh-access-token", accessToken, {
+      sameSite: "Lax",
+      secure: isProd,
+      maxAge,
+      path: "/",
+    }),
+  ];
+}
+
+function expireCookies(): string[] {
+  return [
+    serializeCookie("keystatic-gh-access-token", "", { maxAge: 0, secure: isProd, sameSite: "Lax", path: "/" }),
+    serializeCookie("keystatic-gh-refresh-token", "", { maxAge: 0, secure: isProd, sameSite: "Lax", path: "/" }),
+  ];
+}
+
+// ── OAuth Callback ───────────────────────────────────────────────────
+async function handleOAuthCallback(req: NextRequest) {
+  const url = new URL(req.url);
+  const code = url.searchParams.get("code");
+  const errorDesc = url.searchParams.get("error_description");
+
+  if (errorDesc) {
+    return new NextResponse(`GitHub OAuth error: ${errorDesc}`, { status: 400 });
+  }
+  if (!code) {
+    return new NextResponse("Bad Request: missing code", { status: 400 });
+  }
+
+  const tokenData = await exchangeCodeForToken(code);
+  if (!tokenData || !tokenData.access_token) {
+    console.error("[keystatic-oauth] Token exchange failed:", tokenData);
+    return new NextResponse("Authorization failed", { status: 401 });
+  }
+
+  // Set the access token cookie and redirect to Keystatic
+  const cookies = makeTokenCookies(tokenData.access_token, tokenData.expires_in);
+  const res = NextResponse.redirect(new URL("/keystatic", url.origin), 307);
+  cookies.forEach((c) => res.headers.append("Set-Cookie", c));
+  return res;
+}
+
+// ── Login Redirect ───────────────────────────────────────────────────
+function handleLogin(req: NextRequest) {
+  const reqUrl = new URL(req.url);
+  const authUrl = new URL("https://github.com/login/oauth/authorize");
+  authUrl.searchParams.set("client_id", clientId);
+  authUrl.searchParams.set(
+    "redirect_uri",
+    `${reqUrl.origin}/api/keystatic/github/oauth/callback`
   );
+  return NextResponse.redirect(authUrl.toString(), 307);
 }
 
-// Keystatic's default handler
-const keystatic = makeRouteHandler({
-  config: keystaticConfig,
-  clientId,
-  clientSecret,
-  secret,
-});
+// ── Logout ───────────────────────────────────────────────────────────
+async function handleLogout(req: NextRequest) {
+  const cookies = parseCookies(req.headers.get("cookie"));
+  const accessToken = cookies["keystatic-gh-access-token"];
 
-// Wrap the handlers to add debug logging
-export async function GET(req: NextRequest, context: any) {
-  const debugResult = await debugOAuthCallback(req);
-  if (debugResult) return debugResult;
-  return keystatic.GET(req, context);
+  if (accessToken) {
+    await fetch(`https://api.github.com/applications/${clientId}/token`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Basic ${btoa(clientId + ":" + clientSecret)}`,
+      },
+      body: JSON.stringify({ access_token: accessToken }),
+    }).catch(() => { });
+  }
+
+  const url = new URL(req.url);
+  const res = NextResponse.redirect(new URL("/keystatic", url.origin), 307);
+  expireCookies().forEach((c) => res.headers.append("Set-Cookie", c));
+  return res;
 }
 
-export async function POST(req: NextRequest, context: any) {
-  return keystatic.POST(req, context);
+// ── Refresh Token (returns 401 — non-expiring tokens don't refresh) ─
+function handleRefreshToken() {
+  // Non-expiring tokens don't need refreshing.
+  // If Keystatic asks, just say "no refresh needed" by returning 401.
+  // It will fall back to using the existing access token cookie.
+  return NextResponse.json({ error: "Token refresh not supported" }, { status: 401 });
+}
+
+// ── Main Router ──────────────────────────────────────────────────────
+function getPath(req: NextRequest) {
+  return new URL(req.url).pathname
+    .replace(/^\/api\/keystatic\/?/, "")
+    .split("/")
+    .filter(Boolean)
+    .join("/");
+}
+
+export async function GET(req: NextRequest) {
+  const path = getPath(req);
+  switch (path) {
+    case "github/oauth/callback":
+      return handleOAuthCallback(req);
+    case "github/login":
+      return handleLogin(req);
+    case "github/logout":
+      return handleLogout(req);
+    case "github/refresh-token":
+      return handleRefreshToken();
+    case "github/repo-not-found":
+      return handleLogin(req);
+    default:
+      return new NextResponse("Not Found", { status: 404 });
+  }
+}
+
+export async function POST(req: NextRequest) {
+  const path = getPath(req);
+  switch (path) {
+    case "github/refresh-token":
+      return handleRefreshToken();
+    default:
+      return new NextResponse("Not Found", { status: 404 });
+  }
 }
