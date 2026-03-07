@@ -86,6 +86,12 @@ export const metadata: Metadata = {
     icon: '/Logo.jpeg',
     apple: '/Logo.jpeg',
   },
+  other: {
+    "geo.region": "AE-DU",
+    "geo.placename": "Dubai",
+    "geo.position": "25.262769;55.295175",
+    "ICBM": "25.262769, 55.295175",
+  },
 }
 
 export default function RootLayout({
@@ -127,6 +133,10 @@ export default function RootLayout({
               },
               areaServed: [
                 { '@type': 'City', name: 'Dubai' },
+                { '@type': 'Place', name: 'Business Bay' },
+                { '@type': 'Place', name: 'Downtown Dubai' },
+                { '@type': 'Place', name: 'Jumeirah' },
+                { '@type': 'Place', name: 'Al Quoz' },
                 { '@type': 'City', name: 'Abu Dhabi' },
                 { '@type': 'City', name: 'Sharjah' },
                 { '@type': 'City', name: 'Ajman' },

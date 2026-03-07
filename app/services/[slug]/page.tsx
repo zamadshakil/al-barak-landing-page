@@ -99,7 +99,7 @@ export default async function ServiceDetailPage({
           <div className="absolute inset-0 -z-10">
             <Image
               src={service.image}
-              alt=""
+              alt={service.imageAlt}
               fill
               className="object-cover"
               sizes="100vw"

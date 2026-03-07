@@ -12,6 +12,7 @@ export interface Service {
   shortDescription: string
   heroDescription: string
   image: string
+  imageAlt: string
   icon: string // lucide icon name
   color: "primary" | "accent"
   features: string[]
@@ -35,6 +36,7 @@ export const services: Service[] = [
     heroDescription:
       "Transform your space with our expert painting contracting services. From villa repaints to large-scale commercial projects, we deliver flawless finishes using premium paints and meticulous surface preparation techniques.",
     image: "/images/service-painting-contracting.jpg",
+    imageAlt: "Professional painter applying premium wall coatings in Dubai",
     icon: "Paintbrush",
     color: "primary",
     features: [
@@ -92,6 +94,7 @@ export const services: Service[] = [
     heroDescription:
       "From custom joinery and built-in furniture to hardwood floor installation and restoration, our skilled carpenters deliver precision craftsmanship that adds warmth and value to your property.",
     image: "/images/service-carpentry-wood-flooring.jpg",
+    imageAlt: "Skilled carpenter installing hardwood flooring in a UAE residence",
     icon: "Hammer",
     color: "accent",
     features: [
@@ -149,6 +152,7 @@ export const services: Service[] = [
     heroDescription:
       "We specialise in the installation and maintenance of glass and aluminium systems including curtain walls, storefronts, shower enclosures, office partitions, and window replacements — built to withstand the UAE climate.",
     image: "/images/service-glass-aluminum.jpg",
+    imageAlt: "Glass and aluminium window installation on a Dubai commercial building",
     icon: "Layers",
     color: "primary",
     features: [
@@ -206,6 +210,7 @@ export const services: Service[] = [
     heroDescription:
       "Our skilled tilers deliver precision tile installation for every space — from porcelain and ceramic to natural stone and mosaic. We handle full bathroom and kitchen tiling, floor-to-ceiling installations, and intricate pattern work.",
     image: "/images/service-floor-wall-tiling.jpg",
+    imageAlt: "Precise floor tiling and grouting works for a modern bathroom",
     icon: "Grid3X3",
     color: "accent",
     features: [
@@ -263,6 +268,7 @@ export const services: Service[] = [
     heroDescription:
       "We provide complete metal parts contracting — from fabrication and supply to on-site erection of structural steel, metal frameworks, railings, and industrial components with full safety compliance.",
     image: "/images/service-metal-parts-erections.jpg",
+    imageAlt: "Steel structure erection and metal fabrication on a Dubai site",
     icon: "HardHat",
     color: "primary",
     features: [
@@ -320,6 +326,7 @@ export const services: Service[] = [
     heroDescription:
       "We install and maintain a wide range of steel products — from security doors and gates to handrails, bollards, and steel shelving. Our team ensures durable installations with proper anti-corrosion treatment for the UAE climate.",
     image: "/images/service-steel-products.jpg",
+    imageAlt: "Installation of durable steel products, gates, and handrails",
     icon: "Wrench",
     color: "accent",
     features: [
@@ -377,6 +384,7 @@ export const services: Service[] = [
     heroDescription:
       "From new plumbing installations to bathroom fit-outs and water heater setups, our licensed plumbers deliver reliable, code-compliant work for residential and commercial properties throughout the UAE.",
     image: "/images/service-plumbing-sanitary.jpg",
+    imageAlt: "Licensed plumber performing sanitary installations and pipe fittings",
     icon: "Droplets",
     color: "primary",
     features: [
@@ -434,6 +442,7 @@ export const services: Service[] = [
     heroDescription:
       "Our plastering team delivers smooth, perfectly finished walls and ceilings for new builds and renovations. We specialise in gypsum plastering, wall rendering, decorative cornices, and false ceiling installations across Dubai.",
     image: "/images/service-plaster-works.jpg",
+    imageAlt: "Expert applying smooth gypsum plaster finish to interior walls",
     icon: "PaintBucket",
     color: "accent",
     features: [
@@ -491,6 +500,7 @@ export const services: Service[] = [
     heroDescription:
       "When pipes leak, drains clog, or sanitary systems fail, our expert team responds fast. We provide comprehensive pipe repair, replacement, drain cleaning, and leak detection services for homes and businesses across Dubai.",
     image: "/images/service-sanitary-pipes-repairing.jpg",
+    imageAlt: "Plumbing technician repairing water pipes and resolving leaks",
     icon: "Pipette",
     color: "primary",
     features: [
@@ -548,6 +558,7 @@ export const services: Service[] = [
     heroDescription:
       "Beat the UAE heat and reduce energy costs with our professional insulation services. We provide thermal, acoustic, and waterproof insulation for roofs, walls, pipes, HVAC ducts, and industrial equipment across Dubai.",
     image: "/images/service-insulation-contracting.jpg",
+    imageAlt: "Contractor installing thermal and acoustic insulation materials in UAE building",
     icon: "Shield",
     color: "accent",
     features: [

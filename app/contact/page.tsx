@@ -285,23 +285,21 @@ export default function ContactPage() {
 
               {/* Right Column — Business Info */}
               <div className="lg:col-span-2 space-y-8">
-                {/* Map / Address placeholder */}
-                <div className="relative overflow-hidden rounded-2xl border border-border bg-card aspect-4/3">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-secondary/30">
-                    <Building2 className="w-12 h-12 text-primary/40 mb-4" aria-hidden="true" />
-                    <p className="font-semibold text-foreground mb-1">AL BARZAK TECHNICAL SERVICES L.L.C</p>
-                    <p className="text-sm text-muted-foreground mb-4">First Floor, Office 101, AL ZAHRA TECHNO CENTER, Dubai, UAE</p>
-                    <Button asChild variant="outline" size="sm">
-                      <a
-                        href="https://maps.google.com/?q=AL+ZAHRA+TECHNO+CENTER+Dubai+UAE"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Open in Google Maps
-                        <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
-                      </a>
-                    </Button>
-                  </div>
+                {/* Interactive Google Map */}
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-card aspect-4/3 group">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.232491295325!2d55.29517521501435!3d25.26276898386561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f433ecbc61735%3A0x8be2803b0c204dd1!2sAl%20Zahra%20Techno%20Centre!5e0!3m2!1sen!2sae!4v1710000000000!5m2!1sen!2sae"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Location of AL BARZAK TECHNICAL SERVICES"
+                    className="absolute inset-0 grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
+                  />
+                  {/* Subtle overlay to prevent harsh scrolling issues, but allows interaction */}
+                  <div className="absolute inset-0 pointer-events-none border border-border/20 rounded-2xl" aria-hidden="true" />
                 </div>
 
                 {/* Visitor Instructions */}

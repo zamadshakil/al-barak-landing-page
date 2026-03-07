@@ -1,9 +1,11 @@
+import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { TrustSection } from "@/components/trust-section"
-import { ServicesSection } from "@/components/services-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
 import { Footer } from "@/components/footer"
+
+const TrustSection = dynamic(() => import("@/components/trust-section").then((mod) => mod.TrustSection), { ssr: true })
+const ServicesSection = dynamic(() => import("@/components/services-section").then((mod) => mod.ServicesSection), { ssr: true })
+const TestimonialsSection = dynamic(() => import("@/components/testimonials-section").then((mod) => mod.TestimonialsSection), { ssr: true })
 
 export default function Home() {
   return (
