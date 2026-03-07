@@ -170,7 +170,7 @@ export function TrustSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-100px" }}
-              className="relative grid grid-cols-2 gap-4"
+              className="relative grid grid-cols-1 sm:grid-cols-2 gap-4"
               role="list"
               aria-label="Our core strengths"
             >
@@ -178,7 +178,7 @@ export function TrustSection() {
                 <motion.div
                   variants={slideUp}
                   key={item.title}
-                  className={`group relative bg-card rounded-2xl border border-border p-5 sm:p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${index === 1 ? "mt-6" : index === 2 ? "-mt-6" : ""
+                  className={`group relative bg-card rounded-2xl border border-border p-5 sm:p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${index === 1 ? "sm:mt-6" : index === 2 ? "sm:-mt-6" : ""
                     }`}
                   role="listitem"
                 >

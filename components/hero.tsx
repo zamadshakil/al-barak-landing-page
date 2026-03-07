@@ -6,6 +6,8 @@ import { ArrowRight, Shield, Clock, Award, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, Variants } from "framer-motion"
 
+import HeroImage from "@/public/images/premium_hero_villa.png"
+
 // Animation variants
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -110,8 +112,9 @@ export function Hero() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] sm:aspect-[4/5]">
               <Image
-                src="/images/premium_hero_villa.png"
+                src={HeroImage}
                 alt="Stunning modern luxury villa in Dubai, highlighting premium residential contracting and technical services"
+                placeholder="blur"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
