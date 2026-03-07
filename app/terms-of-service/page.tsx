@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer"
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "Terms and conditions governing the use of Al Barak Technical Services website and services in the UAE.",
+    "Terms and conditions governing the use of Al Barzak Technical Services website and services in the UAE.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 }
@@ -51,13 +51,13 @@ export default function TermsOfServicePage() {
               {/* Intro */}
               <div>
                 <p className="text-muted-foreground leading-relaxed">
-                  These Terms of Service (&ldquo;Terms&rdquo;) govern your use of the Al Barak Technical Services LLC website and the engagement of our maintenance, construction, and technical services within the United Arab Emirates. By using our website or engaging our services, you agree to be bound by these Terms.
+                  These Terms of Service (&ldquo;Terms&rdquo;) govern your use of the Al Barzak Technical Services LLC website and the engagement of our maintenance, construction, and technical services within the United Arab Emirates. By using our website or engaging our services, you agree to be bound by these Terms.
                 </p>
               </div>
 
               <TermsSection number={1} title="Definitions">
                 <ul>
-                  <li><strong>&ldquo;Company&rdquo;</strong> refers to Al Barak Technical Services LLC, registered in Dubai, UAE.</li>
+                  <li><strong>&ldquo;Company&rdquo;</strong> refers to Al Barzak Technical Services LLC, registered in Dubai, UAE.</li>
                   <li><strong>&ldquo;Client&rdquo;</strong> refers to any individual or entity that engages our services or uses our website.</li>
                   <li><strong>&ldquo;Services&rdquo;</strong> refers to all technical, maintenance, construction, and related services offered by the Company.</li>
                   <li><strong>&ldquo;Website&rdquo;</strong> refers to the Company&apos;s website and all its pages.</li>
@@ -117,7 +117,7 @@ export default function TermsOfServicePage() {
               </TermsSection>
 
               <TermsSection number={8} title="Intellectual Property">
-                <p>All content on our website — including text, images, logos, and design — is the property of Al Barak Technical Services LLC and is protected under UAE intellectual property law. You may not reproduce, distribute, or use our content without prior written consent.</p>
+                <p>All content on our website — including text, images, logos, and design — is the property of Al Barzak Technical Services LLC and is protected under UAE intellectual property law. You may not reproduce, distribute, or use our content without prior written consent.</p>
               </TermsSection>
 
               <TermsSection number={9} title="Website Use">
@@ -147,9 +147,9 @@ export default function TermsOfServicePage() {
               <TermsSection number={13} title="Contact">
                 <p>For questions or concerns about these Terms, please contact:</p>
                 <ul>
-                  <li><strong>Email:</strong> <Link href="mailto:info@albarak.online" className="text-primary hover:underline font-medium">info@albarak.online</Link></li>
+                  <li><strong>Email:</strong> <Link href="mailto:info@albarzak.online" className="text-primary hover:underline font-medium">info@albarzak.online</Link></li>
                   <li><strong>Phone:</strong> <Link href="tel:+97145551234" className="text-primary hover:underline font-medium">+971 4 555 1234</Link></li>
-                  <li><strong>Address:</strong> Al Barak Technical Services LLC, Business Bay, Dubai, UAE</li>
+                  <li><strong>Address:</strong> Al Barzak Technical Services LLC, Business Bay, Dubai, UAE</li>
                 </ul>
               </TermsSection>
             </div>

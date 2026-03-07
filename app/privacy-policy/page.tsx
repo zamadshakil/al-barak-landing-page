@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer"
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Learn how Al Barak Technical Services collects, uses, and protects your personal information.",
+    "Learn how Al Barzak Technical Services collects, uses, and protects your personal information.",
   alternates: { canonical: "/privacy-policy" },
   robots: { index: true, follow: true },
 }
@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
               {/* Intro */}
               <div>
                 <p className="text-muted-foreground leading-relaxed">
-                  Al Barak Technical Services LLC (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is committed to protecting the privacy of visitors to our website and users of our services. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or engage our services within the United Arab Emirates.
+                  Al Barzak Technical Services LLC (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is committed to protecting the privacy of visitors to our website and users of our services. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or engage our services within the United Arab Emirates.
                 </p>
               </div>
 
@@ -117,7 +117,7 @@ export default function PrivacyPolicyPage() {
                   <li>Request deletion of your personal data (subject to legal obligations)</li>
                   <li>Withdraw consent for marketing communications at any time</li>
                 </ul>
-                <p>To exercise these rights, please contact us at <Link href="mailto:info@albarak.online" className="text-primary hover:underline font-medium">info@albarak.online</Link>.</p>
+                <p>To exercise these rights, please contact us at <Link href="mailto:info@albarzak.online" className="text-primary hover:underline font-medium">info@albarzak.online</Link>.</p>
               </PolicySection>
 
               <PolicySection number={8} title="Children's Privacy">
@@ -131,9 +131,9 @@ export default function PrivacyPolicyPage() {
               <PolicySection number={10} title="Contact Us">
                 <p>If you have any questions about this Privacy Policy, please contact us:</p>
                 <ul>
-                  <li><strong>Email:</strong> <Link href="mailto:info@albarak.online" className="text-primary hover:underline font-medium">info@albarak.online</Link></li>
+                  <li><strong>Email:</strong> <Link href="mailto:info@albarzak.online" className="text-primary hover:underline font-medium">info@albarzak.online</Link></li>
                   <li><strong>Phone:</strong> <Link href="tel:+97145551234" className="text-primary hover:underline font-medium">+971 4 555 1234</Link></li>
-                  <li><strong>Address:</strong> Al Barak Technical Services LLC, Business Bay, Dubai, UAE</li>
+                  <li><strong>Address:</strong> Al Barzak Technical Services LLC, Business Bay, Dubai, UAE</li>
                 </ul>
               </PolicySection>
             </div>

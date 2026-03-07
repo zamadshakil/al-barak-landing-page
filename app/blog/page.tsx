@@ -14,7 +14,7 @@ export default function BlogIndexPage() {
             Insights &amp; Expertise
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight">
-            The Al&nbsp;Barak Blog
+            The Al&nbsp;Barzak Blog
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
             Practical guidance on maintenance, engineering best-practices, and

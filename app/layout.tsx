@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   description: 'AL BARZAK TECHNICAL SERVICES L.L.C — Licensed contracting and technical services in Dubai, UAE. Painting, carpentry, glass & aluminium, tiling, plumbing, steel works, insulation, and more. Call +971 56 955 6726.',
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://albarak.online'
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://albarzak.online'
   ),
   alternates: {
     canonical: '/',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'AL BARZAK Technical Services',
     locale: 'en_AE',
     type: 'website',
-    url: 'https://albarak.online',
+    url: 'https://albarzak.online',
     images: [
       {
         url: '/Logo.jpeg',
@@ -109,12 +109,12 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
-              '@id': 'https://albarak.online/#business',
+              '@id': 'https://albarzak.online/#business',
               name: 'AL BARZAK TECHNICAL SERVICES L.L.C',
               alternateName: 'AL BARZAK Technical Services',
-              url: 'https://albarak.online',
-              logo: 'https://albarak.online/Logo.jpeg',
-              image: 'https://albarak.online/Logo.jpeg',
+              url: 'https://albarzak.online',
+              logo: 'https://albarzak.online/Logo.jpeg',
+              image: 'https://albarzak.online/Logo.jpeg',
               description:
                 'Licensed contracting and technical services company in Dubai, UAE. Painting, carpentry, glass & aluminium, tiling, metal works, steel products, plumbing, plastering, pipe repair, and insulation.',
               telephone: '+971569556726',

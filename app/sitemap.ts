@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getAllServiceSlugs } from '@/lib/services'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://albarak.online'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://albarzak.online'
   const now = new Date()
 
   const serviceSlugs = getAllServiceSlugs()

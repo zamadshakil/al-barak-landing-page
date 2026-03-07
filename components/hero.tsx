@@ -106,9 +106,9 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative hidden sm:block"
+            className="relative mt-12 lg:mt-0"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-4/5">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] sm:aspect-[4/5]">
               <Image
                 src="/images/hero-technician.jpg"
                 alt="AL BARZAK technician in uniform performing a safety inspection on-site in Dubai"
