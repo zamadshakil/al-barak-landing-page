@@ -5,13 +5,10 @@ import Link from "next/link"
 import {
   Phone,
   Mail,
-  MapPin,
   Clock,
   MessageCircle,
-  ArrowRight,
   Send,
   CheckCircle,
-  Building2,
   AlertTriangle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"

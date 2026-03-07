@@ -107,7 +107,7 @@ export default function ServicesPage() {
                     <div className="relative h-52 overflow-hidden">
                       <Image
                         src={service.image}
-                        alt=""
+                        alt={service.imageAlt}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -118,8 +118,8 @@ export default function ServicesPage() {
                       />
                       <div
                         className={`absolute top-4 left-4 w-12 h-12 rounded-xl ${service.color === "primary"
-                            ? "bg-primary"
-                            : "bg-accent"
+                          ? "bg-primary"
+                          : "bg-accent"
                           } flex items-center justify-center shadow-lg`}
                         aria-hidden="true"
                       >
