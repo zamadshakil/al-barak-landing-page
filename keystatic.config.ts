@@ -5,16 +5,17 @@ import { config, fields, collection } from "@keystatic/core";
  *
  * keystatic.config.ts is imported by both server AND client code (the
  * "use client" KeystaticPage component). Server-only env vars like
- * KEYSTATIC_GITHUB_CLIENT_ID are undefined in the browser bundle, so
- * we cannot rely on them here.
+ * KEYSTATIC_GITHUB_CLIENT_ID are undefined in the browser bundle.
  *
- * Instead we use NEXT_PUBLIC_VERCEL_ENV (auto-injected by Vercel on
- * every deployment) to detect the production environment. Locally,
- * this variable is absent so we fall back to local storage for dev.
+ * We use a dedicated NEXT_PUBLIC_ env var to control this explicitly.
+ * Set NEXT_PUBLIC_KEYSTATIC_STORAGE_KIND=github on the Vercel project
+ * that has the GitHub OAuth secrets configured. If unset, falls back
+ * to local mode (works for local dev and projects without secrets).
  */
-const isVercelDeployment = !!process.env.NEXT_PUBLIC_VERCEL_ENV;
+const useGitHub =
+  process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE_KIND === "github";
 
-const storage = isVercelDeployment
+const storage = useGitHub
   ? {
     kind: "github" as const,
     repo: {
