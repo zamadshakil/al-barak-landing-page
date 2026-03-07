@@ -110,8 +110,8 @@ export function Hero() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] sm:aspect-[4/5]">
               <Image
-                src="/images/hero-technician.jpg"
-                alt="AL BARZAK technician in uniform performing a safety inspection on-site in Dubai"
+                src="/images/premium_hero_villa.png"
+                alt="Stunning modern luxury villa in Dubai, highlighting premium residential contracting and technical services"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
