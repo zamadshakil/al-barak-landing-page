@@ -120,6 +120,8 @@ function handleLogin(req: NextRequest) {
     "redirect_uri",
     `${reqUrl.origin}/api/keystatic/github/oauth/callback`
   );
+  // Request repo scope so Keystatic can read/write content
+  authUrl.searchParams.set("scope", "repo");
   return NextResponse.redirect(authUrl.toString(), 307);
 }
 
