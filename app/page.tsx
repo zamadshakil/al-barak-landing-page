@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer"
 
 const TrustSection = dynamic(() => import("@/components/trust-section").then((mod) => mod.TrustSection), { ssr: true })
 const ServicesSection = dynamic(() => import("@/components/services-section").then((mod) => mod.ServicesSection), { ssr: true })
+const ProjectsShowcase = dynamic(() => import("@/components/projects-showcase").then((mod) => mod.ProcessSection), { ssr: true })
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section").then((mod) => mod.TestimonialsSection), { ssr: true })
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <TrustSection />
         <ServicesSection />
+        <ProjectsShowcase />
         <TestimonialsSection />
       </main>
       <Footer />
