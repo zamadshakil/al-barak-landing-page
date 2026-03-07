@@ -77,5 +77,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/keystatic/:path*", "/api/keystatic/:path*"],
+    matcher: ["/keystatic/:path*"],
 };
