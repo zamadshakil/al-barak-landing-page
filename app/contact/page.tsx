@@ -10,10 +10,13 @@ import {
   Send,
   CheckCircle,
   AlertTriangle,
+  Loader2,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+
+const WEB3FORMS_ACCESS_KEY = "fa107683-d750-402a-94cd-185b5018254b"
 
 const contactInfo = [
   {
@@ -62,12 +65,38 @@ const serviceOptions = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    // In production this would POST to a server action or API route.
-    // For now we show a success state.
-    setSubmitted(true)
+    setLoading(true)
+    setError(null)
+
+    const formData = new FormData(e.currentTarget)
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY)
+    formData.append("subject", "New Enquiry — AL BARZAK Technical Services Website")
+    formData.append("from_name", "AL BARZAK Website Contact Form")
+    formData.append("cc", "zamadshakil@gmail.com")
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setError("Something went wrong. Please try again or call us directly.")
+      }
+    } catch {
+      setError("Network error. Please check your connection or call us directly.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -268,13 +297,30 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {error && (
+                      <div className="flex items-center gap-2 p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+                        <AlertTriangle className="w-5 h-5 shrink-0" aria-hidden="true" />
+                        {error}
+                      </div>
+                    )}
+
                     <Button
                       type="submit"
                       size="lg"
-                      className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-10 text-base font-medium shadow-lg shadow-primary/20 w-full sm:w-auto"
+                      disabled={loading}
+                      className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-10 text-base font-medium shadow-lg shadow-primary/20 w-full sm:w-auto disabled:opacity-60"
                     >
-                      <Send className="w-5 h-5 mr-2" aria-hidden="true" />
-                      Send Message
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-5 h-5 mr-2 animate-spin" aria-hidden="true" />
+                          Sending…
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5 mr-2" aria-hidden="true" />
+                          Send Message
+                        </>
+                      )}
                     </Button>
                   </form>
                 )}
@@ -321,18 +367,11 @@ export default function ContactPage() {
                   <dl className="space-y-3 text-sm">
                     <div className="flex justify-between">
                       <dt className="text-muted-foreground">Monday – Saturday</dt>
-                      <dd className="font-medium text-foreground">8:00 AM – 6:00 PM</dd>
+                      <dd className="font-medium text-foreground">9:00 AM – 5:00 PM</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-muted-foreground">Sunday</dt>
-                      <dd className="font-medium text-foreground">9:00 AM – 2:00 PM</dd>
-                    </div>
-                    <div className="pt-3 mt-3 border-t border-border">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" aria-hidden="true" />
-                        <span className="font-medium text-foreground">Emergency Services</span>
-                      </div>
-                      <p className="text-muted-foreground mt-1">Available 24/7, 365 days a year</p>
+                      <dd className="font-medium text-foreground">Closed</dd>
                     </div>
                   </dl>
                 </div>

@@ -173,17 +173,11 @@ export function Footer() {
                   <Clock className="w-5 h-5 text-primary mt-0.5 shrink-0" aria-hidden="true" />
                   <div>
                     <p className="text-sm text-background font-medium">Regular Hours</p>
-                    <p className="text-sm text-background/70">Mon – Sat: 8:00 AM – 6:00 PM</p>
-                    <p className="text-sm text-background/70">Sunday: 9:00 AM – 2:00 PM</p>
+                    <p className="text-sm text-background/70">Mon – Sat: 9:00 AM – 5:00 PM</p>
+                    <p className="text-sm text-background/70">Sunday: Closed</p>
                   </div>
                 </div>
-                <div className="p-4 rounded-xl bg-primary/20 border border-primary/30">
-                  <p className="text-sm text-background font-medium flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" aria-hidden="true" />
-                    Emergency Services
-                  </p>
-                  <p className="text-sm text-background/70 mt-1">Available 24/7, 365 days a year</p>
-                </div>
+
               </div>
             </div>
           </div>

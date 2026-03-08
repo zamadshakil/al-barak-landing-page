@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { WhatsAppFAB } from '@/components/whatsapp-fab'
 import './globals.css'
 
 const inter = Inter({
@@ -153,14 +154,8 @@ export default function RootLayout({
                     'Thursday',
                     'Saturday',
                   ],
-                  opens: '08:00',
-                  closes: '18:00',
-                },
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: 'Sunday',
                   opens: '09:00',
-                  closes: '14:00',
+                  closes: '17:00',
                 },
               ],
               priceRange: '$$',
@@ -191,6 +186,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <WhatsAppFAB />
         <Analytics />
       </body>
     </html>
