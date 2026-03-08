@@ -35,7 +35,7 @@ export function Hero() {
       <div className="absolute top-40 right-20 w-72 h-72 bg-primary/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24 w-full">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <motion.div

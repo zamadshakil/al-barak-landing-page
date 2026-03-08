@@ -48,7 +48,7 @@ const fadeUp: Variants = {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="relative py-20 lg:py-28 bg-background" aria-labelledby="services-heading">
+    <section id="services" className="relative py-14 lg:py-20 bg-background" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div

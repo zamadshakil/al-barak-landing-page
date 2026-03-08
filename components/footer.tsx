@@ -18,7 +18,7 @@ export function Footer() {
     <footer id="contact">
       {/* ── Emergency CTA Section ──────────────────────────────────────── */}
       <section
-        className="relative py-20 lg:py-28 overflow-hidden bg-primary"
+        className="relative py-14 lg:py-20 overflow-hidden bg-primary"
         aria-labelledby="cta-heading"
       >
         {/* Subtle grid pattern */}

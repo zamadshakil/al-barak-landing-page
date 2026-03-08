@@ -24,7 +24,7 @@ export default function BlogIndexPage() {
       </section>
 
       {/* ── Post grid ── */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
         {posts.length === 0 ? (
           <p className="text-center text-muted-foreground">
             No posts yet — check back soon.

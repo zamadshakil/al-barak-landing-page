@@ -93,7 +93,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative py-20 lg:py-28 overflow-hidden bg-background"
+      className="relative py-14 lg:py-20 overflow-hidden bg-background"
       aria-labelledby="testimonials-heading"
     >
       {/* Decorative blobs */}

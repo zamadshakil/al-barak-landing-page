@@ -154,12 +154,12 @@ const slideUp: Variants = {
 
 export function TrustSection() {
   return (
-    <section id="about" className="relative py-20 lg:py-28 overflow-hidden bg-secondary/30" aria-labelledby="about-heading">
+    <section id="about" className="relative py-14 lg:py-20 overflow-hidden bg-secondary/30" aria-labelledby="about-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
           {/* ── Left — Visual Strength Cards ───────────────────────── */}
-          <div className="relative">
+          <div className="relative pb-10 sm:pb-0">
             {/* Decorative background shapes */}
             <div className="absolute -top-8 -left-8 w-72 h-72 bg-primary/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
             <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-accent/8 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
@@ -178,8 +178,7 @@ export function TrustSection() {
                 <motion.div
                   variants={slideUp}
                   key={item.title}
-                  className={`group relative bg-card rounded-2xl border border-border p-5 sm:p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${index === 1 ? "sm:mt-6" : index === 2 ? "sm:-mt-6" : ""
-                    }`}
+                  className="group relative bg-card rounded-2xl border border-border p-5 sm:p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                   role="listitem"
                 >
                   {/* Accent line at top */}
@@ -201,8 +200,8 @@ export function TrustSection() {
               ))}
             </motion.div>
 
-            {/* Floating Experience Badge */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 lg:-bottom-6 lg:left-auto lg:translate-x-0 lg:-right-6 z-10">
+            {/* Experience Badge — below the card grid */}
+            <div className="flex justify-center sm:justify-start mt-6">
               <div className="flex items-center gap-3 bg-primary text-primary-foreground px-5 py-3 rounded-2xl shadow-xl shadow-primary/25">
                 <Clock className="w-6 h-6" aria-hidden="true" />
                 <div>
@@ -276,7 +275,7 @@ export function TrustSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 lg:mt-24"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 lg:mt-16"
           role="list"
           aria-label="Company statistics"
         >

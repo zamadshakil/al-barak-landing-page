@@ -62,7 +62,7 @@ const steps = [
 export function ProcessSection() {
     return (
         <section
-            className="relative py-20 lg:py-28 overflow-hidden bg-background"
+            className="relative py-14 lg:py-20 overflow-hidden bg-background"
             aria-labelledby="process-heading"
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-8">

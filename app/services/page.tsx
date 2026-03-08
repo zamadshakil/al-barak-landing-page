@@ -223,7 +223,7 @@ export default function ServicesPage() {
 
         {/* ── CTA ───────────────────────────────────────────────────── */}
         <section
-          className="py-20 lg:py-28 bg-primary text-primary-foreground"
+          className="py-14 lg:py-20 bg-primary text-primary-foreground"
           aria-labelledby="services-cta-heading"
         >
           <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
