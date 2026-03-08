@@ -13,7 +13,6 @@ import {
   Pipette,
   Shield,
   ArrowRight,
-  Phone,
   type LucideIcon,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -217,48 +216,6 @@ export default function ServicesPage() {
                   <p className="text-sm text-muted-foreground">{item.desc}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── CTA ───────────────────────────────────────────────────── */}
-        <section
-          className="py-14 lg:py-20 bg-primary text-primary-foreground"
-          aria-labelledby="services-cta-heading"
-        >
-          <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-            <h2
-              id="services-cta-heading"
-              className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight mb-6"
-            >
-              Need Help? Get a Free Quote Today
-            </h2>
-            <p className="text-xl text-primary-foreground/80 mb-10 leading-relaxed">
-              Tell us about your project and receive a detailed, no-obligation
-              estimate within 24 hours.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/80 h-14 px-10 text-base font-semibold shadow-xl"
-              >
-                <Link href="/contact">
-                  Contact Us
-                  <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-primary-foreground/60 bg-transparent text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground h-14 px-10 text-base"
-              >
-                <Link href="tel:+971569556726" aria-label="Call +971 56 955 6726">
-                  <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
-                  +971 56 955 6726
-                </Link>
-              </Button>
             </div>
           </div>
         </section>
