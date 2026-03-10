@@ -90,8 +90,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "AE-DU",
     "geo.placename": "Dubai",
-    "geo.position": "25.262769;55.295175",
-    "ICBM": "25.262769, 55.295175",
+    "geo.position": "25.259546;55.293583",
+    "ICBM": "25.259546, 55.293583",
   },
 }
 
@@ -129,8 +129,8 @@ export default function RootLayout({
               },
               geo: {
                 '@type': 'GeoCoordinates',
-                latitude: 25.1865,
-                longitude: 55.2622,
+                latitude: 25.259546279907227,
+                longitude: 55.293582916259766,
               },
               areaServed: [
                 { '@type': 'City', name: 'Dubai' },

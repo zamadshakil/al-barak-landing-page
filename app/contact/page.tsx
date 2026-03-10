@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import {
   Phone,
   Mail,
@@ -28,7 +29,7 @@ const contactInfo = [
   },
   {
     icon: Phone,
-    label: "Abuzar",
+    label: "Muhammad Abuzar",
     value: "+971 50 878 2516",
     href: "tel:+971508782516",
     description: "Secondary contact",
@@ -331,7 +332,7 @@ export default function ContactPage() {
                 {/* Interactive Google Map */}
                 <div className="relative overflow-hidden rounded-2xl border border-border bg-card aspect-4/3 group">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.232491295325!2d55.29517521501435!3d25.26276898386561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f433ecbc61735%3A0x8be2803b0c204dd1!2sAl%20Zahra%20Techno%20Centre!5e0!3m2!1sen!2sae!4v1710000000000!5m2!1sen!2sae"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1804!2d55.293582916259766!3d25.259546279907227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -343,6 +344,22 @@ export default function ContactPage() {
                   />
                   {/* Subtle overlay to prevent harsh scrolling issues, but allows interaction */}
                   <div className="absolute inset-0 pointer-events-none border border-border/20 rounded-2xl" aria-hidden="true" />
+                </div>
+
+                {/* Office Exterior Photo */}
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-card">
+                  <Image
+                    src="/images/office-exterior.jpeg"
+                    alt="AL BARZAK Technical Services office building exterior in Dubai"
+                    width={800}
+                    height={500}
+                    className="w-full h-auto object-cover"
+                    quality={85}
+                  />
+                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                    <p className="text-white text-sm font-medium">Our Office Building</p>
+                    <p className="text-white/70 text-xs">First Floor, Office 101</p>
+                  </div>
                 </div>
 
                 {/* Visitor Instructions */}
@@ -392,9 +409,9 @@ export default function ContactPage() {
                     variant="outline"
                     className="w-full h-14 text-base font-medium border-foreground/20 hover:bg-primary/5 hover:border-primary/40"
                   >
-                    <Link href="tel:+971508782516" aria-label="Call Abuzar at +971 50 878 2516">
+                    <Link href="tel:+971508782516" aria-label="Call Muhammad Abuzar at +971 50 878 2516">
                       <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
-                      Call Abuzar: +971 50 878 2516
+                      Call Muhammad Abuzar: +971 50 878 2516
                     </Link>
                   </Button>
                   <Button

@@ -115,7 +115,7 @@ export function Footer() {
                 <Link
                   href="tel:+971508782516"
                   className="flex items-center gap-3 hover:text-primary transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background/50"
-                  aria-label="Call Abuzar at +971 50 878 2516"
+                  aria-label="Call Muhammad Abuzar at +971 50 878 2516"
                 >
                   <Phone className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
                   <span className="text-sm text-background/70">+971 50 878 2516</span>
